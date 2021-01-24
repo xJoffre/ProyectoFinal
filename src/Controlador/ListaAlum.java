@@ -6,7 +6,7 @@
 package Controlador;
 
 import Modelo.NodoAlum;
-import Modelo.Persona;
+import Modelo.Alumno;
 
 /**
  *
@@ -23,7 +23,7 @@ public class ListaAlum {
     public boolean esVacia(){
         return Inicio==null;
     }
-    public void Agregar(Persona p){
+    public void Agregar(Alumno p){
         NodoAlum NuevoAlum = new NodoAlum();
         NuevoAlum.setAlum(p);
         if(esVacia()){

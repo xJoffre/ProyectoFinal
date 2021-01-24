@@ -5,6 +5,9 @@
  */
 package VistaProyectoFinal;
 
+import Controlador.CtrlDocente;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Paccha
@@ -31,8 +34,8 @@ public class IngresoUsuario extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        txtUsuario = new javax.swing.JTextField();
+        txtContraseñá = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
@@ -47,21 +50,21 @@ public class IngresoUsuario extends javax.swing.JFrame {
         getContentPane().add(jLabel2);
         jLabel2.setBounds(40, 100, 84, 16);
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtUsuarioActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(150, 60, 90, 24);
+        getContentPane().add(txtUsuario);
+        txtUsuario.setBounds(150, 60, 90, 24);
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        txtContraseñá.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                txtContraseñáActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField2);
-        jTextField2.setBounds(150, 100, 90, 24);
+        getContentPane().add(txtContraseñá);
+        txtContraseñá.setBounds(150, 100, 90, 24);
 
         jButton1.setText("Ingresar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -79,19 +82,32 @@ public class IngresoUsuario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtUsuarioActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void txtContraseñáActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraseñáActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_txtContraseñáActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        this.setVisible(false);
-        AgregarMateria AM = new AgregarMateria();
-        AM.setVisible(true);
+        
+        CtrlDocente D = new CtrlDocente();
+       if(D.comprobarCuenta()){
+            if(  D.Autenticacion(txtUsuario.getText(), txtContraseñá.getText())){
+           this.setVisible(false);
+           AgregarMateria AM = new AgregarMateria();
+           AM.setVisible(true);   
+        }else{
+            JOptionPane.showMessageDialog(null, "Credenciales Incorrectas");
+        }
+       }else{
+            this.setVisible(false);
+            AgregarMateria AM = new AgregarMateria();
+            AM.setVisible(true);   
+       }
+       
+       
     
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -135,7 +151,7 @@ public class IngresoUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField txtContraseñá;
+    private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

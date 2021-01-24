@@ -5,6 +5,8 @@
  */
 package VistaProyectoFinal;
 
+import Controlador.CtrlDocente;
+
 /**
  *
  * @author Paccha
@@ -31,33 +33,28 @@ public class VistaRegistro extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        jbtRegistrarUsuario = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
+        txtNombre = new javax.swing.JTextField();
+        txtApellido = new javax.swing.JTextField();
+        txtUsuario = new javax.swing.JTextField();
+        txtClave = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        jButton1.setText("Registrar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jbtRegistrarUsuario.setText("Registrar");
+        jbtRegistrarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jbtRegistrarUsuarioActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(110, 330, 83, 32);
+        getContentPane().add(jbtRegistrarUsuario);
+        jbtRegistrarUsuario.setBounds(110, 250, 83, 32);
 
         jLabel1.setText("Nombre: ");
         getContentPane().add(jLabel1);
@@ -67,60 +64,47 @@ public class VistaRegistro extends javax.swing.JFrame {
         getContentPane().add(jLabel2);
         jLabel2.setBounds(40, 90, 48, 20);
 
-        jLabel3.setText("Correo: ");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(40, 130, 45, 20);
-
-        jLabel4.setText("Materia: ");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(40, 170, 49, 20);
-
         jLabel6.setText("Registre nombre de Usuario:");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(10, 210, 142, 35);
+        jLabel6.setBounds(10, 150, 170, 35);
 
         jLabel7.setText("Registre Clave:");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(10, 260, 85, 16);
+        jLabel7.setBounds(10, 200, 85, 16);
 
         jLabel8.setText("REGISTRO DOCENTE");
         getContentPane().add(jLabel8);
         jLabel8.setBounds(90, 10, 115, 26);
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(100, 50, 139, 20);
-        getContentPane().add(jTextField2);
-        jTextField2.setBounds(100, 90, 139, 20);
-        getContentPane().add(jTextField4);
-        jTextField4.setBounds(100, 130, 139, 20);
-        getContentPane().add(jTextField5);
-        jTextField5.setBounds(100, 170, 139, 20);
+        getContentPane().add(txtNombre);
+        txtNombre.setBounds(100, 50, 139, 30);
+        getContentPane().add(txtApellido);
+        txtApellido.setBounds(100, 90, 139, 30);
 
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+        txtUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
+                txtUsuarioActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField6);
-        jTextField6.setBounds(160, 220, 98, 24);
-        getContentPane().add(jTextField7);
-        jTextField7.setBounds(160, 260, 98, 24);
-
-        jLabel9.setText("Contraseña incorrecta");
-        getContentPane().add(jLabel9);
-        jLabel9.setBounds(150, 290, 128, 16);
+        getContentPane().add(txtUsuario);
+        txtUsuario.setBounds(180, 154, 98, 30);
+        getContentPane().add(txtClave);
+        txtClave.setBounds(180, 200, 98, 30);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+    private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
+    }//GEN-LAST:event_txtUsuarioActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jbtRegistrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtRegistrarUsuarioActionPerformed
+    CtrlDocente D = new CtrlDocente();
+    D.crearDocente(txtNombre.getText(), txtApellido.getText(), txtUsuario.getText(), txtClave.getText());
+    D.GuardarFichero();
     this.setVisible(false);
     Login L = new Login();
     L.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jbtRegistrarUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -158,20 +142,15 @@ public class VistaRegistro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
+    private javax.swing.JButton jbtRegistrarUsuario;
+    private javax.swing.JTextField txtApellido;
+    private javax.swing.JTextField txtClave;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

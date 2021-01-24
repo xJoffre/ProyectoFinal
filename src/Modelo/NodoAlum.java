@@ -10,7 +10,7 @@ package Modelo;
  * @author Usuario iTC
  */
 public class NodoAlum {
-    private Persona Alum;
+    private Alumno Alum;
     private NodoAlum Sig;    
     
     public void NodoAlum(){
@@ -18,11 +18,11 @@ public class NodoAlum {
         this.Sig = null;
     } 
 
-    public Persona getAlum() {
+    public Alumno getAlum() {
         return Alum;
     }
 
-    public void setAlum(Persona Alum) {
+    public void setAlum(Alumno Alum) {
         this.Alum = Alum;
     }
 

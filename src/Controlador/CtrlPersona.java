@@ -5,7 +5,7 @@
  */
 package Controlador;
 
-import Modelo.Persona;
+import Modelo.Alumno;
 
 /**
  *
@@ -13,8 +13,8 @@ import Modelo.Persona;
  */
 public class CtrlPersona {
     
-    public Persona CrearAlumno(String Nombre, String Apellido, String Correo, String Celular){
-        Persona p = new Persona();
+    public Alumno CrearAlumno(String Nombre, String Apellido, String Correo, String Celular){
+        Alumno p = new Alumno();
         p.setNombre(Nombre);
         p.setApellido(Apellido);
         p.setCorreo(Correo);

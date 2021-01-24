@@ -9,13 +9,13 @@ package Modelo;
  *
  * @author Usuario iTC
  */
-public class Persona {
+public class Alumno {
     private String Nombre;
     private String Apellido;
     private String Correo;
     private String Celular;
 
-    public Persona() {
+    public Alumno() {
        
     }
 
