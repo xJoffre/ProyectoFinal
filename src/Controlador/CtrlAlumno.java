@@ -22,7 +22,7 @@ public class CtrlAlumno {
     Al.setCorreo(C);
     Al.setMateria(M);
     Al.setCurso(G);
-    
+
     this.A = Al;
     }
 
