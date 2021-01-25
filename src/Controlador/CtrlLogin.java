@@ -14,7 +14,7 @@ import java.io.*;
  */
 
 
-public class CtrlDocente {
+public class CtrlLogin {
     private Docente Do;
 
     public void crearDocente(String N, String A, String U, String P) {

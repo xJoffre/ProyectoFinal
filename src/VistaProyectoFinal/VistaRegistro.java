@@ -5,7 +5,7 @@
  */
 package VistaProyectoFinal;
 
-import Controlador.CtrlDocente;
+import Controlador.CtrlLogin;
 
 /**
  *
@@ -98,7 +98,7 @@ public class VistaRegistro extends javax.swing.JFrame {
     }//GEN-LAST:event_txtUsuarioActionPerformed
 
     private void jbtRegistrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtRegistrarUsuarioActionPerformed
-    CtrlDocente D = new CtrlDocente();
+    CtrlLogin D = new CtrlLogin();
     D.crearDocente(txtNombre.getText(), txtApellido.getText(), txtUsuario.getText(), txtClave.getText());
     D.GuardarFichero();
     this.setVisible(false);

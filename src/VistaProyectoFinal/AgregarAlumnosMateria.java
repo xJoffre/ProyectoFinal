@@ -5,16 +5,17 @@
  */
 package VistaProyectoFinal;
 
+import Controlador.CtrlAlumno;
+import Controlador.ListaAlum;
+
 /**
  *
  * @author Paccha
  */
-public class AgregarMateria extends javax.swing.JFrame {
+public class AgregarAlumnosMateria extends javax.swing.JFrame {
 
-    /**
-     * Creates new form AgregarMateria
-     */
-    public AgregarMateria() {
+    ListaAlum L = new ListaAlum();
+    public AgregarAlumnosMateria() {
         initComponents();
 
         setLocationRelativeTo(null);
@@ -33,21 +34,21 @@ public class AgregarMateria extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        txtMateria = new javax.swing.JTextField();
+        txtGrado = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        txtEstudiante = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        txtTelefono = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        txtApellido = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        txtCorreo = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        AgregarLista = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -56,23 +57,23 @@ public class AgregarMateria extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        jLabel1.setText("Nombe Materia: ");
+        jLabel1.setText("Nombre Materia: ");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(36, 48, 92, 16);
+        jLabel1.setBounds(70, 50, 97, 16);
         getContentPane().add(jLabel2);
         jLabel2.setBounds(36, 83, 0, 0);
 
         jLabel3.setText("Nombe grado: ");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(36, 97, 82, 16);
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(125, 45, 120, 24);
-        getContentPane().add(jTextField2);
-        jTextField2.setBounds(125, 94, 120, 24);
+        jLabel3.setBounds(70, 100, 82, 16);
+        getContentPane().add(txtMateria);
+        txtMateria.setBounds(180, 50, 120, 24);
+        getContentPane().add(txtGrado);
+        txtGrado.setBounds(180, 100, 120, 24);
 
         jLabel4.setText("Agregar Estudiante:");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(40, 160, 112, 16);
+        jLabel4.setBounds(70, 160, 112, 16);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -88,51 +89,56 @@ public class AgregarMateria extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(15, 405, 375, 177);
+        jScrollPane1.setBounds(40, 410, 375, 177);
 
         jLabel5.setText("Telefono:");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(80, 310, 50, 10);
-        getContentPane().add(jTextField4);
-        jTextField4.setBounds(151, 195, 140, 24);
+        jLabel5.setBounds(70, 300, 60, 10);
+        getContentPane().add(txtEstudiante);
+        txtEstudiante.setBounds(190, 200, 140, 24);
 
         jLabel6.setText("Apellido Estudiante:");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(40, 230, 111, 16);
-        getContentPane().add(jTextField5);
-        jTextField5.setBounds(150, 310, 140, 20);
+        jLabel6.setBounds(70, 230, 111, 16);
+        getContentPane().add(txtTelefono);
+        txtTelefono.setBounds(190, 290, 140, 30);
 
         jLabel7.setText("Nombre Estudiante:");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(40, 200, 111, 16);
-        getContentPane().add(jTextField3);
-        jTextField3.setBounds(150, 230, 140, 24);
+        jLabel7.setBounds(70, 200, 111, 16);
+        getContentPane().add(txtApellido);
+        txtApellido.setBounds(190, 230, 140, 24);
 
         jLabel8.setText("Correo:");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(90, 270, 42, 16);
-        getContentPane().add(jTextField6);
-        jTextField6.setBounds(150, 270, 140, 24);
+        jLabel8.setBounds(70, 260, 42, 16);
+        getContentPane().add(txtCorreo);
+        txtCorreo.setBounds(190, 260, 140, 24);
 
-        jLabel9.setText("Lista de estudiantes agregada: ");
+        jLabel9.setText("Lista de estudiantes : ");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(20, 380, 200, 16);
+        jLabel9.setBounds(50, 380, 200, 16);
 
-        jButton1.setText("Agregar a lista");
-        getContentPane().add(jButton1);
-        jButton1.setBounds(160, 350, 120, 32);
+        AgregarLista.setText("Agregar a la lista");
+        AgregarLista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AgregarListaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(AgregarLista);
+        AgregarLista.setBounds(140, 330, 180, 32);
 
         jButton2.setText("Eliminar estudiante");
         getContentPane().add(jButton2);
-        jButton2.setBounds(20, 600, 130, 32);
+        jButton2.setBounds(40, 600, 150, 32);
 
         jLabel10.setText("Ejem: TerceroA");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(260, 100, 90, 16);
+        jLabel10.setBounds(320, 110, 90, 16);
 
         jLabel11.setText("Agregar materia:");
         getContentPane().add(jLabel11);
-        jLabel11.setBounds(40, 10, 120, 20);
+        jLabel11.setBounds(70, 10, 120, 20);
 
         jButton3.setText("Agg notas ");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -141,7 +147,7 @@ public class AgregarMateria extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton3);
-        jButton3.setBounds(210, 600, 140, 32);
+        jButton3.setBounds(250, 600, 140, 32);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -152,6 +158,13 @@ public class AgregarMateria extends javax.swing.JFrame {
         MenuDocente MD = new MenuDocente();
         MD.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void AgregarListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarListaActionPerformed
+        // TODO add your handling code here:
+        CtrlAlumno Al = new CtrlAlumno();
+        Al.CrearAlumno(txtMateria.getText(), txtGrado.getText(), txtEstudiante.getText(), txtApellido.getText(), txtCorreo.getText(), txtTelefono.getText());
+       
+    }//GEN-LAST:event_AgregarListaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -170,26 +183,33 @@ public class AgregarMateria extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AgregarMateria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgregarAlumnosMateria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AgregarMateria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgregarAlumnosMateria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AgregarMateria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgregarAlumnosMateria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AgregarMateria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgregarAlumnosMateria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AgregarMateria().setVisible(true);
+                new AgregarAlumnosMateria().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton AgregarLista;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
@@ -205,11 +225,11 @@ public class AgregarMateria extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField txtApellido;
+    private javax.swing.JTextField txtCorreo;
+    private javax.swing.JTextField txtEstudiante;
+    private javax.swing.JTextField txtGrado;
+    private javax.swing.JTextField txtMateria;
+    private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 }

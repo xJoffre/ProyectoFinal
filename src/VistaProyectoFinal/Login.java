@@ -5,7 +5,7 @@
  */
 package VistaProyectoFinal;
 
-import Controlador.CtrlDocente;
+import Controlador.CtrlLogin;
 
 /**
  *
@@ -18,7 +18,7 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
-         CtrlDocente D = new CtrlDocente();
+         CtrlLogin D = new CtrlLogin();
         if(D.comprobarCuenta()==true){
             jButton2.setVisible(false);
         }
@@ -98,14 +98,14 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
-         CtrlDocente D = new CtrlDocente();
+         CtrlLogin D = new CtrlLogin();
          if(D.comprobarCuenta()){
               this.setVisible(false);
         IngresoUsuario I = new IngresoUsuario();
         I.setVisible(true);
          }else{
               this.setVisible(false);
-            AgregarMateria AM = new AgregarMateria();
+            AgregarAlumnosMateria AM = new AgregarAlumnosMateria();
             AM.setVisible(true);   
          }
        

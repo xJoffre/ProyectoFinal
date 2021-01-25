@@ -5,7 +5,7 @@
  */
 package VistaProyectoFinal;
 
-import Controlador.CtrlDocente;
+import Controlador.CtrlLogin;
 import javax.swing.JOptionPane;
 
 /**
@@ -92,18 +92,18 @@ public class IngresoUsuario extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
-        CtrlDocente D = new CtrlDocente();
+        CtrlLogin D = new CtrlLogin();
        if(D.comprobarCuenta()){
             if(  D.Autenticacion(txtUsuario.getText(), txtContraseñá.getText())){
            this.setVisible(false);
-           AgregarMateria AM = new AgregarMateria();
+           AgregarAlumnosMateria AM = new AgregarAlumnosMateria();
            AM.setVisible(true);   
         }else{
             JOptionPane.showMessageDialog(null, "Credenciales Incorrectas");
         }
        }else{
             this.setVisible(false);
-            AgregarMateria AM = new AgregarMateria();
+            AgregarAlumnosMateria AM = new AgregarAlumnosMateria();
             AM.setVisible(true);   
        }
        
