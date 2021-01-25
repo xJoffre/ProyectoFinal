@@ -22,8 +22,7 @@ public class CtrlAlumno {
     Al.setCorreo(C);
     Al.setMateria(M);
     Al.setCurso(G);
-   // prueba de git; 
-   // prueba de git22; 
+
     this.A = Al;
     }
     
