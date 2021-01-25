@@ -25,6 +25,14 @@ public class CtrlAlumno {
     
     this.A = Al;
     }
+
+    public Alumno getA() {
+        return A;
+    }
+
+    public void setA(Alumno A) {
+        this.A = A;
+    }
     
     
 }

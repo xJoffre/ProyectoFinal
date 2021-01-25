@@ -7,6 +7,7 @@ package VistaProyectoFinal;
 
 import Controlador.CtrlAlumno;
 import Controlador.ListaAlum;
+import VistaProyectoFinal.Tablas.TablaEstudiantes;
 
 /**
  *
@@ -15,11 +16,17 @@ import Controlador.ListaAlum;
 public class AgregarAlumnosMateria extends javax.swing.JFrame {
 
     ListaAlum L = new ListaAlum();
+    TablaEstudiantes T = new TablaEstudiantes();
     public AgregarAlumnosMateria() {
         initComponents();
 
         setLocationRelativeTo(null);
         setSize(400, 680);
+    }
+    private void cargarTabla() {
+        T.setList(L);
+        jTableAlumnos.setModel(T);
+        jTableAlumnos.updateUI();
     }
 
     /**
@@ -38,7 +45,7 @@ public class AgregarAlumnosMateria extends javax.swing.JFrame {
         txtGrado = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableAlumnos = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
         txtEstudiante = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -75,21 +82,21 @@ public class AgregarAlumnosMateria extends javax.swing.JFrame {
         getContentPane().add(jLabel4);
         jLabel4.setBounds(70, 160, 112, 16);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableAlumnos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTableAlumnos);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(40, 410, 375, 177);
+        jScrollPane1.setBounds(20, 410, 440, 177);
 
         jLabel5.setText("Telefono:");
         getContentPane().add(jLabel5);
@@ -163,7 +170,9 @@ public class AgregarAlumnosMateria extends javax.swing.JFrame {
         // TODO add your handling code here:
         CtrlAlumno Al = new CtrlAlumno();
         Al.CrearAlumno(txtMateria.getText(), txtGrado.getText(), txtEstudiante.getText(), txtApellido.getText(), txtCorreo.getText(), txtTelefono.getText());
-       
+        L.Agregar(Al.getA());
+        cargarTabla();
+        
     }//GEN-LAST:event_AgregarListaActionPerformed
 
     /**
@@ -224,7 +233,7 @@ public class AgregarAlumnosMateria extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableAlumnos;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtEstudiante;
