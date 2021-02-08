@@ -6,8 +6,10 @@
 package VistaProyectoFinal;
 
 import Controlador.CtrlAlumno;
+import Controlador.CtrlTxt;
 import Controlador.ListaAlum;
 import VistaProyectoFinal.Tablas.TablaEstudiantes;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,13 +22,20 @@ public class AgregarAlumnosMateria extends javax.swing.JFrame {
     public AgregarAlumnosMateria() {
         initComponents();
 
-        setLocationRelativeTo(null);
-        setSize(400, 680);
-    }
+          LabelNombreCurso.setVisible(false);
+        this.setSize(476, 766);
+    }   
     private void cargarTabla() {
         T.setList(L);
         jTableAlumnos.setModel(T);
         jTableAlumnos.updateUI();
+    }
+    
+    private void LimpiarCampos(){
+        txtEstudiante.setText("");
+        txtApellido.setText("");
+        txtCorreo.setText("");
+        txtTelefono.setText("");
     }
 
     /**
@@ -56,31 +65,32 @@ public class AgregarAlumnosMateria extends javax.swing.JFrame {
         txtCorreo = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         AgregarLista = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        LabelNombreCurso = new javax.swing.JLabel();
+        Cargartxt = new javax.swing.JButton();
+        Guardartxt = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
         jLabel1.setText("Nombre Materia: ");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(70, 50, 97, 16);
+        jLabel1.setBounds(10, 50, 97, 16);
         getContentPane().add(jLabel2);
         jLabel2.setBounds(36, 83, 0, 0);
 
-        jLabel3.setText("Nombe grado: ");
+        jLabel3.setText("Nombre grado: ");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(70, 100, 82, 16);
+        jLabel3.setBounds(10, 90, 100, 16);
         getContentPane().add(txtMateria);
-        txtMateria.setBounds(180, 50, 120, 24);
+        txtMateria.setBounds(120, 50, 120, 24);
         getContentPane().add(txtGrado);
-        txtGrado.setBounds(180, 100, 120, 24);
+        txtGrado.setBounds(120, 90, 120, 24);
 
         jLabel4.setText("Agregar Estudiante:");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(70, 160, 112, 16);
+        jLabel4.setBounds(10, 160, 112, 16);
 
         jTableAlumnos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -96,31 +106,31 @@ public class AgregarAlumnosMateria extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTableAlumnos);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(20, 410, 440, 177);
+        jScrollPane1.setBounds(20, 420, 440, 177);
 
         jLabel5.setText("Telefono:");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(70, 300, 60, 10);
+        jLabel5.setBounds(10, 290, 60, 10);
         getContentPane().add(txtEstudiante);
-        txtEstudiante.setBounds(190, 200, 140, 24);
+        txtEstudiante.setBounds(130, 190, 140, 24);
 
         jLabel6.setText("Apellido Estudiante:");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(70, 230, 111, 16);
+        jLabel6.setBounds(10, 220, 111, 16);
         getContentPane().add(txtTelefono);
-        txtTelefono.setBounds(190, 290, 140, 30);
+        txtTelefono.setBounds(130, 280, 140, 30);
 
         jLabel7.setText("Nombre Estudiante:");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(70, 200, 111, 16);
+        jLabel7.setBounds(10, 190, 111, 16);
         getContentPane().add(txtApellido);
-        txtApellido.setBounds(190, 230, 140, 24);
+        txtApellido.setBounds(130, 220, 140, 24);
 
         jLabel8.setText("Correo:");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(70, 260, 42, 16);
+        jLabel8.setBounds(10, 250, 42, 16);
         getContentPane().add(txtCorreo);
-        txtCorreo.setBounds(190, 260, 140, 24);
+        txtCorreo.setBounds(130, 250, 140, 24);
 
         jLabel9.setText("Lista de estudiantes : ");
         getContentPane().add(jLabel9);
@@ -133,38 +143,43 @@ public class AgregarAlumnosMateria extends javax.swing.JFrame {
             }
         });
         getContentPane().add(AgregarLista);
-        AgregarLista.setBounds(140, 330, 180, 32);
-
-        jButton2.setText("Eliminar estudiante");
-        getContentPane().add(jButton2);
-        jButton2.setBounds(40, 600, 150, 32);
+        AgregarLista.setBounds(10, 330, 180, 32);
 
         jLabel10.setText("Ejem: TerceroA");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(320, 110, 90, 16);
+        jLabel10.setBounds(250, 90, 90, 30);
 
-        jLabel11.setText("Agregar materia:");
+        jLabel11.setText("    Registro de Alumnos en su respetiva materia");
+        jLabel11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel11.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLabel11);
-        jLabel11.setBounds(70, 10, 120, 20);
+        jLabel11.setBounds(110, 10, 280, 30);
 
-        jButton3.setText("Agg notas ");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        LabelNombreCurso.setText("jLabel12");
+        LabelNombreCurso.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(LabelNombreCurso);
+        LabelNombreCurso.setBounds(160, 130, 110, 16);
+
+        Cargartxt.setText("Cargar");
+        Cargartxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                CargartxtActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3);
-        jButton3.setBounds(250, 600, 140, 32);
+        getContentPane().add(Cargartxt);
+        Cargartxt.setBounds(20, 640, 77, 32);
+
+        Guardartxt.setText("Guadar ");
+        Guardartxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GuardartxtActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Guardartxt);
+        Guardartxt.setBounds(20, 600, 74, 32);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        this.setVisible(false);
-        MenuDocente MD = new MenuDocente();
-        MD.setVisible(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
 
     private void AgregarListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarListaActionPerformed
         // TODO add your handling code here:
@@ -172,8 +187,27 @@ public class AgregarAlumnosMateria extends javax.swing.JFrame {
         Al.CrearAlumno(txtMateria.getText(), txtGrado.getText(), txtEstudiante.getText(), txtApellido.getText(), txtCorreo.getText(), txtTelefono.getText());
         L.Agregar(Al.getA());
         cargarTabla();
-        
+        LimpiarCampos();
+        LabelNombreCurso.setVisible(true);
+        LabelNombreCurso.setText("Lista "+txtMateria.getText()+" "+txtGrado.getText());
+        txtMateria.setVisible(false);   
+        L.Ordenar(L, 0, L.tamaño()-1);
     }//GEN-LAST:event_AgregarListaActionPerformed
+
+    private void GuardartxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardartxtActionPerformed
+        CtrlTxt C = new CtrlTxt();
+        String Nombre = "Lista";
+        Nombre = Nombre + txtMateria.getText() + txtGrado.getText();
+        C.GuardarTxt(L, Nombre);
+    }//GEN-LAST:event_GuardartxtActionPerformed
+
+    private void CargartxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CargartxtActionPerformed
+         CtrlTxt C = new CtrlTxt();
+        String Nombre = "Lista";
+        Nombre = Nombre + txtMateria.getText() + txtGrado.getText();
+        L = C.CargarTxt(Nombre);
+        cargarTabla();
+    }//GEN-LAST:event_CargartxtActionPerformed
 
     /**
      * @param args the command line arguments
@@ -219,8 +253,9 @@ public class AgregarAlumnosMateria extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AgregarLista;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton Cargartxt;
+    private javax.swing.JButton Guardartxt;
+    private javax.swing.JLabel LabelNombreCurso;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

@@ -7,13 +7,14 @@ package Controlador;
 
 import Modelo.NodoAlum;
 import Modelo.Alumno;
+import java.io.Serializable;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author Usuario iTC
  */
-public class ListaAlum {
+public class ListaAlum implements Serializable{
 
     private NodoAlum Inicio;
 
@@ -112,24 +113,25 @@ public class ListaAlum {
         }
         Aux.setAlum(dato);
     }
-      /*     //Ordenar QuickSort
-      public void Ordenar(ListaAutos Li, int inf, int sup) {
+         //Ordenar QuickSort
+      public void Ordenar(ListaAlum Li, int inf, int sup) {
         int i = inf;
         int j = sup;
         int y = (inf + sup) / 2;
 
-        int x = Li.obtenerDato(y).getAño();
+        String x = Li.ObtenerDato(y).getApellido();
 
         while (i <= j) {
-            while (Li.obtenerDato(i).getAño() > x) {
+            while (Li.ObtenerDato(i).getApellido().compareTo(x)<0) {
                 i++;
             }
-            while (Li.obtenerDato(j).getAño() < x) {
+            while (Li.ObtenerDato(j).getApellido().compareTo(x)>0) {
                 j--;
+             
             }
             if (i <= j) {
-                Auto Aux = Li.obtenerDato(i);
-                Li.insertar(Li.obtenerDato(j), i);
+                Alumno Aux = Li.ObtenerDato(i);
+                Li.insertar(Li.ObtenerDato(j), i);
                 Li.insertar(Aux, j);
                 i++;
                 j--;
@@ -141,6 +143,6 @@ public class ListaAlum {
         if (i < sup) {
             Ordenar(Li, i, sup);
         }
-    }*/
+    }
 
 }

@@ -11,7 +11,7 @@ import Modelo.Alumno;
  *
  * @author Usuario iTC
  */
-public class CtrlPersona {
+public class CtrlPersona  {
     
     public Alumno CrearAlumno(String Nombre, String Apellido, String Correo, String Celular){
         Alumno p = new Alumno();

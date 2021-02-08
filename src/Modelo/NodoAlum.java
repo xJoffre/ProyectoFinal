@@ -5,11 +5,13 @@
  */
 package Modelo;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Usuario iTC
  */
-public class NodoAlum {
+public class NodoAlum implements Serializable{
     private Alumno Alum;
     private NodoAlum Sig;    
     
