@@ -11,30 +11,29 @@ import java.io.Serializable;
  *
  * @author Usuario iTC
  */
-public class NodoAlum implements Serializable{
-    private Alumno Alum;
-    private NodoAlum Sig;    
+public class Nodo implements Serializable {
+    private String Nombre;
+    private Nodo Sig;
     
-    public void NodoAlum(){
-        this.Alum = null;
+      public void NodoAlum(){
+        this.Nombre = null;
         this.Sig = null;
     } 
 
-    public Alumno getAlum() {
-        return Alum;
+    public String getNombre() {
+        return Nombre;
     }
 
-    public void setAlum(Alumno Alum) {
-        this.Alum = Alum;
+    public void setNombre(String Nombre) {
+        this.Nombre = Nombre;
     }
 
-    public NodoAlum getSig() {
+    public Nodo getSig() {
         return Sig;
     }
 
-    public void setSig(NodoAlum Sig) {
+    public void setSig(Nodo Sig) {
         this.Sig = Sig;
     }
-        
+      
 }
-
