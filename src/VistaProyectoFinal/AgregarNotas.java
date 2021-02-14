@@ -9,12 +9,12 @@ package VistaProyectoFinal;
  *
  * @author Paccha
  */
-public class MenuDocente extends javax.swing.JFrame {
+public class AgregarNotas extends javax.swing.JFrame {
 
     /**
      * Creates new form InformacionDocente
      */
-    public MenuDocente() {
+    public AgregarNotas() {
         initComponents();
         
         
@@ -32,14 +32,15 @@ public class MenuDocente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        txtMateria = new javax.swing.JTextField();
+        txtGrado = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jComboBox2 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -48,14 +49,6 @@ public class MenuDocente extends javax.swing.JFrame {
             }
         });
         getContentPane().setLayout(null);
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Materia", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(30, 90, 70, 26);
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Curso", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox2);
-        jComboBox2.setBounds(140, 90, 70, 26);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -71,7 +64,7 @@ public class MenuDocente extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(30, 180, 340, 300);
+        jScrollPane1.setBounds(20, 330, 500, 220);
 
         jButton1.setText("Agregar Materia");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -80,24 +73,27 @@ public class MenuDocente extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(240, 530, 130, 32);
+        jButton1.setBounds(20, 600, 130, 32);
 
-        jLabel1.setText("curso*");
+        jLabel1.setText("Nombre Materia: ");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(150, 70, 50, 20);
+        jLabel1.setBounds(20, 10, 97, 16);
 
-        jLabel2.setText("materia*");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(30, 70, 51, 16);
+        jLabel3.setText("Nombre grado: ");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(20, 50, 100, 16);
+        getContentPane().add(txtMateria);
+        txtMateria.setBounds(130, 10, 120, 24);
+        getContentPane().add(txtGrado);
+        txtGrado.setBounds(130, 50, 120, 24);
 
-        jButton2.setText("Editar notas");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton2);
-        jButton2.setBounds(260, 90, 100, 32);
+        jLabel10.setText("Ejem: TerceroA");
+        getContentPane().add(jLabel10);
+        jLabel10.setBounds(260, 50, 90, 30);
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tarea", "Examen", "Leccion", "Actividad en Clase", " " }));
+        getContentPane().add(jComboBox2);
+        jComboBox2.setBounds(360, 210, 65, 26);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -108,10 +104,6 @@ public class MenuDocente extends javax.swing.JFrame {
                 AgregarAlumnosMateria AM = new AgregarAlumnosMateria();
                 AM.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
@@ -134,33 +126,36 @@ public class MenuDocente extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MenuDocente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgregarNotas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MenuDocente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgregarNotas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MenuDocente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgregarNotas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MenuDocente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgregarNotas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MenuDocente().setVisible(true);
+                new AgregarNotas().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextField txtGrado;
+    private javax.swing.JTextField txtMateria;
     // End of variables declaration//GEN-END:variables
 }

@@ -113,7 +113,7 @@ public class ListaAlum implements Serializable{
         }
         Aux.setAlum(dato);
     }
-         //Ordenar QuickSort
+         //Ordenar Strings QuickSort
       public void Ordenar(ListaAlum Li, int inf, int sup) {
         int i = inf;
         int j = sup;

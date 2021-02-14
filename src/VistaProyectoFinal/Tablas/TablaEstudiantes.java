@@ -32,7 +32,7 @@ public class TablaEstudiantes extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return 6;
+        return 5;
     }
 
     @Override
@@ -43,12 +43,10 @@ public class TablaEstudiantes extends AbstractTableModel {
             case 1:
                 return List.ObtenerDato(rowIndex).getApellido();
             case 2:
-                return List.ObtenerDato(rowIndex).getMateria();
-            case 3:
                 return List.ObtenerDato(rowIndex).getCurso();    
-            case 4:
+            case 3:
                 return List.ObtenerDato(rowIndex).getCorreo();
-            case 5:
+            case 4:
                 return List.ObtenerDato(rowIndex).getCelular();
             default:
                 return null;
@@ -62,12 +60,10 @@ public class TablaEstudiantes extends AbstractTableModel {
             case 1:
                 return "Apellido";
             case 2:
-                return "Materia";
-            case 3:
                 return "Curso";
-            case 4:
+            case 3:
                 return "Correo";
-            case 5:
+            case 4:
                 return "Celular";    
             default:
                 return null;

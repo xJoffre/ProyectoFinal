@@ -16,19 +16,10 @@ public class Alumno implements Serializable{
     private String Apellido;
     private String Correo;
     private String Celular;
-    private String Materia;
     private String Curso;
 
     public Alumno() {
        
-    }
-
-    public String getMateria() {
-        return Materia;
-    }
-
-    public void setMateria(String Materia) {
-        this.Materia = Materia;
     }
 
     public String getCurso() {

@@ -190,13 +190,11 @@ public class AgregarAlumnosMateria extends javax.swing.JFrame {
     private void AgregarListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarListaActionPerformed
         // TODO add your handling code here:
         CtrlAlumno Al = new CtrlAlumno();
-        Al.CrearAlumno(txtMateria.getText(), txtGrado.getText(), txtEstudiante.getText(), txtApellido.getText(), txtCorreo.getText(), txtTelefono.getText());
+        Al.CrearAlumno(txtGrado.getText(), txtEstudiante.getText(), txtApellido.getText(), txtCorreo.getText(), txtTelefono.getText());
         L.Agregar(Al.getA());
         cargarTabla();
         LimpiarCampos();
         L.Ordenar(L, 0, L.tamaño()-1);
-        txtGrado.setVisible(false);
-        txtMateria.setVisible(false);
     }//GEN-LAST:event_AgregarListaActionPerformed
 
     private void GuardartxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardartxtActionPerformed
@@ -236,8 +234,7 @@ public class AgregarAlumnosMateria extends javax.swing.JFrame {
           txtGrado.setText("");
           txtMateria.setText("");
           jbtCrearNuevaLista.setVisible(false);
-        }
-        
+        }        
     }//GEN-LAST:event_jbtCrearNuevaListaActionPerformed
 
     /**

@@ -14,13 +14,12 @@ import Modelo.Alumno;
 public class CtrlAlumno {
     private Alumno A ;
     
-    public void CrearAlumno(String M, String G, String E, String A, String C, String T ){
+    public void CrearAlumno( String G, String E, String A, String C, String T ){
     Alumno Al = new Alumno ();
     Al.setNombre(E);
     Al.setApellido(A);
     Al.setCelular(T);
     Al.setCorreo(C);
-    Al.setMateria(M);
     Al.setCurso(G);
 
     this.A = Al;
