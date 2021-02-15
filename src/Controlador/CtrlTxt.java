@@ -65,6 +65,31 @@ public class CtrlTxt {
         }
         return null;
     }
-        
+   //Guardar y Leer Lista de Actividades
+             public void GuardarListaAc(CtrlListaActividades Li, String Nombre) {
+        try {
+            FileOutputStream fos = new FileOutputStream(Nombre+".txt");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(Li);
+            oos.close();
+            
+        } catch (IOException e) {
+        }
+    }   
+    public CtrlListaActividades CargarListaActividadeAc(String Nombre){
+        try {
+            FileInputStream fis = new FileInputStream(Nombre+".txt");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            CtrlListaActividades Aux ;
+            
+           Aux = (CtrlListaActividades) ois.readObject();
+           ois.close();
+           // System.out.println(" "+Aux.tamaño());
+            return Aux;
+        } catch (IOException | ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "El archivo no se ah encontrado");
+        }
+        return null;
+    }
         
 }

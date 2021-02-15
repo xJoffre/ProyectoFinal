@@ -89,6 +89,21 @@ public class CtrlListaActividades implements Serializable{
             i++;
         }
         Aux.setA(dato);
-    }     
-          
+    }
+        public boolean Buscar (String Nombre){
+           if (esVacia()) {
+               System.out.println("Lista Vacia");
+        } else {
+            Nodo Aux = Inicio;
+
+            while (Aux != null) {
+                if(Aux.getA().getNombre().equals(Nombre)){
+                    return true;
+                }
+                Aux = Aux.getSig();
+            }
+        }
+       return false;
+    }
+         
 }

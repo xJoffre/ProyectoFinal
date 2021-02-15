@@ -19,8 +19,7 @@ public class VistaRegistro extends javax.swing.JFrame {
     public VistaRegistro() {
         initComponents();
 
-        setLocationRelativeTo(null);
-        setSize(295, 410);
+      
 
     }
 
@@ -90,7 +89,8 @@ public class VistaRegistro extends javax.swing.JFrame {
         getContentPane().add(txtClave);
         txtClave.setBounds(180, 200, 98, 30);
 
-        pack();
+        setSize(new java.awt.Dimension(335, 367));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed

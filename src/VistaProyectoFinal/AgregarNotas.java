@@ -23,6 +23,8 @@ public class AgregarNotas extends javax.swing.JFrame {
         TablaEstudiantes T = new TablaEstudiantes();
         TablaActividades TA = new TablaActividades();
         CtrlListaActividades La = new CtrlListaActividades();
+        CtrlTxt C = new CtrlTxt();
+         private int Seleccion;
     public AgregarNotas() {
         initComponents();
     }
@@ -36,6 +38,13 @@ public class AgregarNotas extends javax.swing.JFrame {
         jTabelActividades.setModel(TA);
         jTabelActividades.updateUI();
     }
+        private void LimpiarTxt(){
+            txtEstado.setText("");
+            txtNombre.setText("");
+            txtNota.setText("");
+            txtObs.setText("");
+            txtTema.setText("");
+        }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -67,16 +76,19 @@ public class AgregarNotas extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTabelActividades = new javax.swing.JTable();
-        CargarTxt = new javax.swing.JButton();
+        CargarListaTxt = new javax.swing.JButton();
         jbtAgregarActividad = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         txtEstado = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         labelEstudiante = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jbtCargarNotas = new javax.swing.JButton();
+        jbtGuardarNotas = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
+        txtUnidad = new javax.swing.JTextField();
+        jbtEditar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -178,19 +190,24 @@ public class AgregarNotas extends javax.swing.JFrame {
 
             }
         ));
+        jTabelActividades.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTabelActividadesMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTabelActividades);
 
         getContentPane().add(jScrollPane2);
         jScrollPane2.setBounds(20, 470, 450, 140);
 
-        CargarTxt.setText("Cargar Lista");
-        CargarTxt.addActionListener(new java.awt.event.ActionListener() {
+        CargarListaTxt.setText("Cargar Lista");
+        CargarListaTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CargarTxtActionPerformed(evt);
+                CargarListaTxtActionPerformed(evt);
             }
         });
-        getContentPane().add(CargarTxt);
-        CargarTxt.setBounds(20, 120, 150, 32);
+        getContentPane().add(CargarListaTxt);
+        CargarListaTxt.setBounds(20, 120, 150, 32);
 
         jbtAgregarActividad.setText("Agregar Actividad");
         jbtAgregarActividad.addActionListener(new java.awt.event.ActionListener() {
@@ -220,23 +237,53 @@ public class AgregarNotas extends javax.swing.JFrame {
         getContentPane().add(labelEstudiante);
         labelEstudiante.setBounds(110, 270, 160, 30);
 
-        jLabel12.setText("  Notas de");
+        jLabel12.setText("   Unidad");
         jLabel12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         getContentPane().add(jLabel12);
         jLabel12.setBounds(290, 270, 80, 30);
 
-        jButton1.setText("Cargar Notas");
-        getContentPane().add(jButton1);
-        jButton1.setBounds(160, 620, 130, 32);
+        jbtCargarNotas.setText("Cargar Notas");
+        jbtCargarNotas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtCargarNotasActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jbtCargarNotas);
+        jbtCargarNotas.setBounds(160, 620, 130, 32);
 
-        jButton2.setText("Guardar Notas");
-        getContentPane().add(jButton2);
-        jButton2.setBounds(20, 620, 130, 32);
+        jbtGuardarNotas.setText("Guardar Notas");
+        jbtGuardarNotas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtGuardarNotasActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jbtGuardarNotas);
+        jbtGuardarNotas.setBounds(20, 620, 130, 32);
 
         jLabel13.setText("  Notas de");
         jLabel13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         getContentPane().add(jLabel13);
         jLabel13.setBounds(20, 270, 80, 30);
+        getContentPane().add(txtUnidad);
+        txtUnidad.setBounds(380, 270, 90, 30);
+
+        jbtEditar.setText("Editar");
+        jbtEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtEditarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jbtEditar);
+        jbtEditar.setBounds(170, 430, 80, 32);
+
+        jButton1.setText("Limpiar Campos");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(260, 430, 140, 32);
 
         setSize(new java.awt.Dimension(523, 720));
         setLocationRelativeTo(null);
@@ -253,11 +300,10 @@ public class AgregarNotas extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_formWindowActivated
 
-    private void CargarTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CargarTxtActionPerformed
+    private void CargarListaTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CargarListaTxtActionPerformed
      if(txtGrado.getText().length() == 0 && txtMateria.getText().length() == 0 ){
           JOptionPane.showMessageDialog(null, "Rellene los campos de Materia y Grado");
-      }else{
-        CtrlTxt C = new CtrlTxt();
+      }else{ 
         String Nombre = "Lista";
         Nombre = Nombre + txtMateria.getText() + txtGrado.getText();
         L = C.CargarTxt(Nombre);
@@ -265,14 +311,18 @@ public class AgregarNotas extends javax.swing.JFrame {
       }
      JOptionPane.showMessageDialog(null,"Haga click sobre el nombre del "
              + "\n estudiante para agregar notas " );
-    }//GEN-LAST:event_CargarTxtActionPerformed
+    }//GEN-LAST:event_CargarListaTxtActionPerformed
 
     private void jbtAgregarActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtAgregarActividadActionPerformed
+      
+                
         CtrlActividad Ac = new CtrlActividad();
         Ac.Crear(txtNombre.getText(), txtTema.getText(), cbxTipo.getSelectedItem().toString(),
                 txtEstado.getText(), Double.parseDouble(txtNota.getText()), txtObs.getText());
         La.Agregar(Ac.getA());
+        LimpiarTxt();
         cargarTabla1();
+       
     }//GEN-LAST:event_jbtAgregarActividadActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -284,11 +334,55 @@ public class AgregarNotas extends javax.swing.JFrame {
     }//GEN-LAST:event_cbxTipoActionPerformed
 
     private void jTableAlumnosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableAlumnosMouseClicked
-        int Seleccion = jTableAlumnos.rowAtPoint(evt.getPoint());
+        Seleccion = jTableAlumnos.rowAtPoint(evt.getPoint());
         String A = " "+ String.valueOf(jTableAlumnos.getValueAt(Seleccion, 0));
-        A = A+" "+String.valueOf(jTableAlumnos.getValueAt(Seleccion, 1));
+        A = A+"_"+String.valueOf(jTableAlumnos.getValueAt(Seleccion, 1));
         labelEstudiante.setText(A);
     }//GEN-LAST:event_jTableAlumnosMouseClicked
+
+    private void jbtGuardarNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtGuardarNotasActionPerformed
+        String Nombre = L.ObtenerDato(Seleccion).getCodigo();
+        Nombre = Nombre + L.ObtenerDato(Seleccion).getNombre()+
+                 txtMateria.getText()+ txtUnidad.getText();
+        C.GuardarListaAc(La, Nombre);   
+    }//GEN-LAST:event_jbtGuardarNotasActionPerformed
+
+    private void jbtCargarNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtCargarNotasActionPerformed
+        String Nombre = L.ObtenerDato(Seleccion).getCodigo();
+        Nombre = Nombre + L.ObtenerDato(Seleccion).getNombre()+
+                 txtMateria.getText()+ txtUnidad.getText();
+        System.out.println(Nombre);
+        if(C.CargarListaActividadeAc(Nombre)==null){
+             JOptionPane.showMessageDialog(null, "Aun no hay listas creadas");
+        }else{
+        La = C.CargarListaActividadeAc(Nombre);
+        cargarTabla1();}
+    }//GEN-LAST:event_jbtCargarNotasActionPerformed
+
+    private void jbtEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtEditarActionPerformed
+        La.ObtenerDato(Seleccion).setNombre(txtNombre.getText());
+        La.ObtenerDato(Seleccion).setTema(txtTema.getText());
+        La.ObtenerDato(Seleccion).setTipo(cbxTipo.getSelectedItem().toString());
+        La.ObtenerDato(Seleccion).setEstado(txtEstado.getText());
+        La.ObtenerDato(Seleccion).setObervaciobes(txtObs.getText());
+        La.ObtenerDato(Seleccion).setNota(Double.parseDouble(txtNota.getText()));
+        cargarTabla1();
+    }//GEN-LAST:event_jbtEditarActionPerformed
+
+    private void jTabelActividadesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabelActividadesMouseClicked
+        int S = jTabelActividades.rowAtPoint(evt.getPoint());
+        txtNombre.setText(String.valueOf(jTabelActividades.getValueAt(S, 0)));
+        txtTema.setText(String.valueOf(jTabelActividades.getValueAt(S, 1)));
+        txtEstado.setText(String.valueOf(jTabelActividades.getValueAt(S, 3)));
+        txtNota.setText(String.valueOf(jTabelActividades.getValueAt(S, 4)));
+        txtObs.setText(String.valueOf(jTabelActividades.getValueAt(S, 5)));
+    }//GEN-LAST:event_jTabelActividadesMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        LimpiarTxt();
+        La = new CtrlListaActividades();
+        cargarTabla1();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -329,10 +423,9 @@ public class AgregarNotas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton CargarTxt;
+    private javax.swing.JButton CargarListaTxt;
     private javax.swing.JComboBox<String> cbxTipo;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -352,6 +445,9 @@ public class AgregarNotas extends javax.swing.JFrame {
     private javax.swing.JTable jTableAlumnos;
     private javax.swing.JButton jbtAgregarActividad;
     private javax.swing.JButton jbtAgregarMateria;
+    private javax.swing.JButton jbtCargarNotas;
+    private javax.swing.JButton jbtEditar;
+    private javax.swing.JButton jbtGuardarNotas;
     private javax.swing.JLabel labelEstudiante;
     private javax.swing.JTextField txtEstado;
     private javax.swing.JTextField txtGrado;
@@ -360,5 +456,6 @@ public class AgregarNotas extends javax.swing.JFrame {
     private javax.swing.JTextField txtNota;
     private javax.swing.JTextField txtObs;
     private javax.swing.JTextField txtTema;
+    private javax.swing.JTextField txtUnidad;
     // End of variables declaration//GEN-END:variables
 }

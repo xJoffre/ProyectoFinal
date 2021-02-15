@@ -32,7 +32,7 @@ public class TablaActividades extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return 5;
+        return 6;
     }
 
     @Override
