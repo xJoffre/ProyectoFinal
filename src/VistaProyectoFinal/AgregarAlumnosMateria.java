@@ -24,21 +24,18 @@ public class AgregarAlumnosMateria extends javax.swing.JFrame {
     CtrlTxt C = new CtrlTxt();
     ListaNombresTxt Lt = new ListaNombresTxt();
     TablaNombres Tn = new TablaNombres();
-
+    private int Seleccion;
 
     public AgregarAlumnosMateria() {
         initComponents();
-
-        jbtCrearNuevaLista.setVisible(false);
-        
     }
-
     private void cargarTabla() {
         T.setList(L);
         jTableAlumnos.setModel(T);
         jTableAlumnos.updateUI();
     }
-     private void cargarTablaN() {
+
+    private void cargarTablaN() {
         Tn.setList(Lt);
         jTableNombres.setModel(Tn);
         jTableNombres.updateUI();
@@ -90,6 +87,7 @@ public class AgregarAlumnosMateria extends javax.swing.JFrame {
         jTableNombres = new javax.swing.JTable();
         jLabel13 = new javax.swing.JLabel();
         ListasCreadas = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -119,10 +117,15 @@ public class AgregarAlumnosMateria extends javax.swing.JFrame {
 
             }
         ));
+        jTableAlumnos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableAlumnosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTableAlumnos);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(20, 450, 440, 177);
+        jScrollPane1.setBounds(20, 450, 560, 177);
 
         jLabel5.setText("Telefono:");
         getContentPane().add(jLabel5);
@@ -239,23 +242,32 @@ public class AgregarAlumnosMateria extends javax.swing.JFrame {
         getContentPane().add(ListasCreadas);
         ListasCreadas.setBounds(370, 150, 140, 32);
 
+        jButton2.setText("Editar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2);
+        jButton2.setBounds(200, 360, 63, 32);
+
         setSize(new java.awt.Dimension(623, 809));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void AgregarListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarListaActionPerformed
         // TODO add your handling code here:
-        if(txtCodigo.getText().length() != 4){
+        if (txtCodigo.getText().length() != 4) {
             JOptionPane.showMessageDialog(null, "El codigo debe contener solo 4 numeros");
-        }else if(L.Buscar(L, txtCodigo.getText())){
+        } else if (L.Buscar(L, txtCodigo.getText())) {
             JOptionPane.showMessageDialog(null, "Ya existe ese codigo");
-        }else{
-        CtrlAlumno Al = new CtrlAlumno();
-        Al.CrearAlumno(txtEstudiante.getText(), txtApellido.getText(), txtCorreo.getText(), txtTelefono.getText(), txtCodigo.getText());
-        L.Agregar(Al.getA());
-        cargarTabla();
-        LimpiarCampos();
-        L.Ordenar(L, 0, L.tamaño() - 1);
+        } else {
+            CtrlAlumno Al = new CtrlAlumno();
+            Al.CrearAlumno(txtEstudiante.getText(), txtApellido.getText(), txtCorreo.getText(), txtTelefono.getText(), txtCodigo.getText());
+            L.Agregar(Al.getA());
+            cargarTabla();
+            LimpiarCampos();
+            L.Ordenar(L, 0, L.tamaño() - 1);
         }
     }//GEN-LAST:event_AgregarListaActionPerformed
 
@@ -264,15 +276,14 @@ public class AgregarAlumnosMateria extends javax.swing.JFrame {
         String Nombre = "Lista";
         Nombre = Nombre + txtMateria.getText() + txtGrado.getText();
         C.GuardarTxt(L, Nombre);
-        if(!Lt.Buscar(L, Nombre)){
-             Lt.Agregar(Nombre);
-        Lt.Mostrar();
-        C.GuardarNombresTxt(Lt, "ListaNombres");
-        jbtCrearNuevaLista.setVisible(true);
-        cargarTablaN();
+        if (!Lt.Buscar(L, Nombre)) {
+            Lt.Agregar(Nombre);
+            Lt.Mostrar();
+            C.GuardarNombresTxt(Lt, "ListaNombres");
+            cargarTablaN();
         }
-       
-        
+
+
     }//GEN-LAST:event_GuardartxtActionPerformed
 
     private void CargartxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CargartxtActionPerformed
@@ -280,8 +291,8 @@ public class AgregarAlumnosMateria extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Rellene los campos de Materia y Grado");
         } else {
             String Nombre = "Lista";
-            Nombre = Nombre +txtMateria.getText() + txtGrado.getText();
-           // System.out.println(Nombre);
+            Nombre = Nombre + txtMateria.getText() + txtGrado.getText();
+            // System.out.println(Nombre);
             L = C.CargarTxt(Nombre);
             cargarTabla();
         }
@@ -295,12 +306,12 @@ public class AgregarAlumnosMateria extends javax.swing.JFrame {
 
     private void jbtCrearNuevaListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtCrearNuevaListaActionPerformed
         int op = Integer.parseInt(JOptionPane.showInputDialog("¿ Desea Conservar la lista de alumnos actual \n (Esto no afectara sus datos actuales(  ?\n"
-            + "1. Si"
-            + "\n2. No"));
-    if (op == 1) {
-        txtGrado.setText("");
-        txtMateria.setText("");
-        LimpiarCampos();
+                + "1. Si"
+                + "\n2. No"));
+        if (op == 1) {
+            txtGrado.setText("");
+            txtMateria.setText("");
+            LimpiarCampos();
         } else {
             L = new ListaAlum();
             cargarTabla();
@@ -308,15 +319,36 @@ public class AgregarAlumnosMateria extends javax.swing.JFrame {
     }//GEN-LAST:event_jbtCrearNuevaListaActionPerformed
 
     private void ListasCreadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListasCreadasActionPerformed
-        if(C.CargarNombresTxt("ListaNombres")==null){
-           JOptionPane.showMessageDialog(null, "Aun no hay listas creadas");
-        }else{
-        Lt = C.CargarNombresTxt("ListaNombres");
-        cargarTablaN();    
+        if (C.CargarNombresTxt("ListaNombres") == null) {
+            JOptionPane.showMessageDialog(null, "Aun no hay listas creadas");
+        } else {
+            Lt = C.CargarNombresTxt("ListaNombres");
+            cargarTablaN();
         }
-        
+
     }//GEN-LAST:event_ListasCreadasActionPerformed
-    
+
+    private void jTableAlumnosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableAlumnosMouseClicked
+        Seleccion = jTableAlumnos.rowAtPoint(evt.getPoint());
+        txtEstudiante.setText(String.valueOf(jTableAlumnos.getValueAt(Seleccion, 0)));
+        txtApellido.setText(String.valueOf(jTableAlumnos.getValueAt(Seleccion, 1)));
+        txtTelefono.setText(String.valueOf(jTableAlumnos.getValueAt(Seleccion, 2)));
+        txtCorreo.setText(String.valueOf(jTableAlumnos.getValueAt(Seleccion, 3)));
+    }//GEN-LAST:event_jTableAlumnosMouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+       if(txtCodigo.getText().length()>0){
+           JOptionPane.showMessageDialog(null," No se puede modificar el Codigo");
+       }else{
+           L.ObtenerDato(Seleccion).setNombre(txtEstudiante.getText());
+           L.ObtenerDato(Seleccion).setApellido(txtApellido.getText());
+           L.ObtenerDato(Seleccion).setCorreo(txtCorreo.getText());
+           L.ObtenerDato(Seleccion).setCelular(txtTelefono.getText());
+           
+         cargarTabla();
+       }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -365,6 +397,7 @@ public class AgregarAlumnosMateria extends javax.swing.JFrame {
     private javax.swing.JButton Guardartxt;
     private javax.swing.JButton ListasCreadas;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

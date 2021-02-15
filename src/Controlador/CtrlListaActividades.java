@@ -90,7 +90,13 @@ public class CtrlListaActividades implements Serializable{
         }
         Aux.setA(dato);
     }
-        public boolean Buscar (String Nombre){
+
+    /**
+     *
+     * @param Nombre
+     * @return
+     */
+    public boolean Buscar ( String Nombre){
            if (esVacia()) {
                System.out.println("Lista Vacia");
         } else {

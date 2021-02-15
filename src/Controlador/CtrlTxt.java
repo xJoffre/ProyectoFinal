@@ -80,8 +80,7 @@ public class CtrlTxt {
         try {
             FileInputStream fis = new FileInputStream(Nombre+".txt");
             ObjectInputStream ois = new ObjectInputStream(fis);
-            CtrlListaActividades Aux ;
-            
+            CtrlListaActividades Aux ;       
            Aux = (CtrlListaActividades) ois.readObject();
            ois.close();
            // System.out.println(" "+Aux.tamaño());
