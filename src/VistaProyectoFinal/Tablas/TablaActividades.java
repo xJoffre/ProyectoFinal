@@ -5,28 +5,28 @@
  */
 package VistaProyectoFinal.Tablas;
 
-
+import Controlador.CtrlListaActividades;
 import javax.swing.table.AbstractTableModel;
-import Controlador.ListaAlum;
+
 /**
  *
  * @author Usuario iTC
  */
-public class TablaEstudiantes extends AbstractTableModel {
+public class TablaActividades extends AbstractTableModel {
+     private CtrlListaActividades List;
 
-    private ListaAlum List;
-
-    public ListaAlum getList() {
+    public CtrlListaActividades getList() {
         return List;
     }
 
-    public void setList(ListaAlum List) {
+    public void setList(CtrlListaActividades List) {
         this.List = List;
     }
 
+
     @Override
     public int getRowCount() {
-     return List.tamaño();
+        return List.tamaño();
 
     }
 
@@ -41,13 +41,15 @@ public class TablaEstudiantes extends AbstractTableModel {
             case 0:
                 return List.ObtenerDato(rowIndex).getNombre();
             case 1:
-                return List.ObtenerDato(rowIndex).getApellido(); 
+                return List.ObtenerDato(rowIndex).getTema();
             case 2:
-                return List.ObtenerDato(rowIndex).getCorreo();
+                return List.ObtenerDato(rowIndex).getTipo(); 
             case 3:
-                return List.ObtenerDato(rowIndex).getCelular();
+                return List.ObtenerDato(rowIndex).getEstado();    
             case 4:
-                return List.ObtenerDato(rowIndex).getCodigo();
+                return List.ObtenerDato(rowIndex).getNota();
+            case 5:
+                return List.ObtenerDato(rowIndex).getObervaciobes();
             default:
                 return null;
         }
@@ -58,16 +60,17 @@ public class TablaEstudiantes extends AbstractTableModel {
             case 0:
                 return "Nombre";
             case 1:
-                return "Apellido";
+                return "Tema";
             case 2:
-                return "Correo";
+                return "Tipo";
             case 3:
-                return "Celular";
+                return "Estado";
             case 4:
-                return "Codigo";
+                return "Nota";
+            case 5:
+                return "Observacion";    
             default:
                 return null;
         }
-    }
-
+    } 
 }

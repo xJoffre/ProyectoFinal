@@ -5,24 +5,27 @@
  */
 package Modelo;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Usuario iTC
  */
-public class Actividades {
+public class Actividades implements Serializable{
     
-    private String Numero;
+    private String Nombre;
     private String Tema;
+    private String Tipo;
     private String Estado; // Entrgado, no entregado , Di pueba, no dio prueba
-    private double Nota; //
+    private Double Nota; //
     private String obervaciobes; 
 
-    public String getNumero() {
-        return Numero;
+    public String getNombre() {
+        return Nombre;
     }
 
-    public void setNumero(String Numero) {
-        this.Numero = Numero;
+    public void setNombre(String Nombre) {
+        this.Nombre = Nombre;
     }
 
     public String getTema() {
@@ -33,7 +36,13 @@ public class Actividades {
         this.Tema = Tema;
     }
 
+    public String getTipo() {
+        return Tipo;
+    }
 
+    public void setTipo(String Tipo) {
+        this.Tipo = Tipo;
+    }
 
     public String getEstado() {
         return Estado;
@@ -43,11 +52,11 @@ public class Actividades {
         this.Estado = Estado;
     }
 
-    public double getNota() {
+    public Double getNota() {
         return Nota;
     }
 
-    public void setNota(double Nota) {
+    public void setNota(Double Nota) {
         this.Nota = Nota;
     }
 
@@ -58,6 +67,8 @@ public class Actividades {
     public void setObervaciobes(String obervaciobes) {
         this.obervaciobes = obervaciobes;
     }
+
+   
     
            
 }

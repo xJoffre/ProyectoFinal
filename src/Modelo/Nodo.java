@@ -12,20 +12,26 @@ import java.io.Serializable;
  * @author Usuario iTC
  */
 public class Nodo implements Serializable {
-    private String Nombre;
+    private String NombreTxt;
+    private Actividades A;
     private Nodo Sig;
-    
-      public void NodoAlum(){
-        this.Nombre = null;
-        this.Sig = null;
-    } 
 
-    public String getNombre() {
-        return Nombre;
+    public String getNombreTxt() {
+        return NombreTxt;
     }
 
-    public void setNombre(String Nombre) {
-        this.Nombre = Nombre;
+    public void setNombreTxt(String NombreTxt) {
+        this.NombreTxt = NombreTxt;
+    }
+
+       
+    
+    public Actividades getA() {
+        return A;
+    }
+
+    public void setA(Actividades A) {
+        this.A = A;
     }
 
     public Nodo getSig() {
@@ -35,5 +41,5 @@ public class Nodo implements Serializable {
     public void setSig(Nodo Sig) {
         this.Sig = Sig;
     }
-      
+
 }

@@ -5,22 +5,22 @@
  */
 package VistaProyectoFinal.Tablas;
 
-
+import Controlador.ListaNombresTxt;
 import javax.swing.table.AbstractTableModel;
-import Controlador.ListaAlum;
+
 /**
  *
  * @author Usuario iTC
  */
-public class TablaEstudiantes extends AbstractTableModel {
+public class TablaNombres extends AbstractTableModel {
 
-    private ListaAlum List;
+    private ListaNombresTxt List;
 
-    public ListaAlum getList() {
+    public ListaNombresTxt getList() {
         return List;
     }
 
-    public void setList(ListaAlum List) {
+    public void setList(ListaNombresTxt List) {
         this.List = List;
     }
 
@@ -32,22 +32,15 @@ public class TablaEstudiantes extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return 5;
+        return 1;
     }
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         switch (columnIndex) {
             case 0:
-                return List.ObtenerDato(rowIndex).getNombre();
-            case 1:
-                return List.ObtenerDato(rowIndex).getApellido(); 
-            case 2:
-                return List.ObtenerDato(rowIndex).getCorreo();
-            case 3:
-                return List.ObtenerDato(rowIndex).getCelular();
-            case 4:
-                return List.ObtenerDato(rowIndex).getCodigo();
+                return List.ObtenerDato(rowIndex);
+            
             default:
                 return null;
         }
@@ -57,17 +50,9 @@ public class TablaEstudiantes extends AbstractTableModel {
         switch (Column) {
             case 0:
                 return "Nombre";
-            case 1:
-                return "Apellido";
-            case 2:
-                return "Correo";
-            case 3:
-                return "Celular";
-            case 4:
-                return "Codigo";
             default:
                 return null;
         }
     }
-
+    
 }

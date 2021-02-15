@@ -104,6 +104,22 @@ public class ListaAlum implements Serializable{
         }
     }
     
+    public boolean Buscar (ListaAlum L, String Cod){
+           if (esVacia()) {
+               System.out.println("Lista Vacia");
+        } else {
+            NodoAlum Aux = Inicio;
+
+            while (Aux != null) {
+                if(Aux.getAlum().getCodigo().equals(Cod)){
+                    return true;
+                }
+                Aux = Aux.getSig();
+            }
+        }
+       return false;
+    }
+    
        public void insertar(Alumno dato, int pos) {
         NodoAlum Aux = Inicio;
         int i = 0;

@@ -16,20 +16,19 @@ public class Alumno implements Serializable{
     private String Apellido;
     private String Correo;
     private String Celular;
-    private String Curso;
+    private String Codigo;
+
+    public String getCodigo() {
+        return Codigo;
+    }
+
+    public void setCodigo(String Codigo) {
+        this.Codigo = Codigo;
+    }
 
     public Alumno() {
        
     }
-
-    public String getCurso() {
-        return Curso;
-    }
-
-    public void setCurso(String Curso) {
-        this.Curso = Curso;
-    }
-    
     
     public String getNombre() {
         return Nombre;
