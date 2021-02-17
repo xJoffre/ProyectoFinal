@@ -13,6 +13,7 @@ import Controlador.ListaNombresTxt;
 import VistaProyectoFinal.Tablas.TablaActividades;
 import VistaProyectoFinal.Tablas.TablaEstudiantes;
 import VistaProyectoFinal.Tablas.TablaNombres;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 
 /**
@@ -33,6 +34,32 @@ public class AgregarNotas extends javax.swing.JFrame {
 
     public AgregarNotas() {
         initComponents();
+        jbtGuardarNotas.setEnabled(false);
+        jbtCargarNotas.setEnabled(true);
+        jbtCalcularPromedio.setEnabled(false);
+    }
+
+    public void confirmaringreso() {
+        if (txtMateria.getText().isEmpty() || txtGrado.getText().isEmpty()) {
+            labelIngreso.setText("CAMPOS FALTANTES");
+        } else {
+            labelIngreso.setText("");
+        }
+    }
+
+    public void campos() {
+        if (txtNombre.getText().isEmpty() || txtTema.getText().isEmpty() || txtEstado.getText().isEmpty()
+                || txtNota.getText().isEmpty() || txtObs.getText().isEmpty() || txtUnidad.getText().isEmpty()) {
+            labelcampos.setText("FALTAN DATOS");
+            jbtGuardarNotas.setEnabled(false);
+            jbtCargarNotas.setEnabled(true);
+            jbtCalcularPromedio.setEnabled(false);
+        } else {
+            labelcampos.setText("");
+            jbtGuardarNotas.setEnabled(true);
+            jbtCargarNotas.setEnabled(true);
+            jbtCalcularPromedio.setEnabled(true);
+        }
     }
 
     private void cargarTabla() {
@@ -70,6 +97,7 @@ public class AgregarNotas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        LabelSuma1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableAlumnos = new javax.swing.JTable();
         jbtAgregarMateria = new javax.swing.JButton();
@@ -107,6 +135,28 @@ public class AgregarNotas extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jTableNombres = new javax.swing.JTable();
         ListasCreadas = new javax.swing.JButton();
+        jbtCalcularPromedio = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        labelPLecciones = new javax.swing.JLabel();
+        labelPExamenes = new javax.swing.JLabel();
+        labelPIntraclase = new javax.swing.JLabel();
+        labelPExtraclase = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        LabelSuma = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jTextM1 = new javax.swing.JTextField();
+        jTexM = new javax.swing.JTextField();
+        LabelPF = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        labelIngreso = new javax.swing.JLabel();
+        labelcampos = new javax.swing.JLabel();
+
+        LabelSuma1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -132,7 +182,7 @@ public class AgregarNotas extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTableAlumnos);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(20, 160, 460, 100);
+        jScrollPane1.setBounds(20, 190, 460, 100);
 
         jbtAgregarMateria.setText("Regresar");
         jbtAgregarMateria.addActionListener(new java.awt.event.ActionListener() {
@@ -141,7 +191,7 @@ public class AgregarNotas extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jbtAgregarMateria);
-        jbtAgregarMateria.setBounds(530, 10, 130, 32);
+        jbtAgregarMateria.setBounds(680, 20, 130, 24);
 
         jLabel1.setText("Ingrese Nombre y materia del curso donde se van a agregar Notas");
         getContentPane().add(jLabel1);
@@ -149,56 +199,107 @@ public class AgregarNotas extends javax.swing.JFrame {
 
         jLabel3.setText("Nombre grado: ");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(20, 80, 100, 16);
+        jLabel3.setBounds(20, 90, 100, 16);
+
+        txtMateria.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtMateriaKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtMateriaKeyTyped(evt);
+            }
+        });
         getContentPane().add(txtMateria);
-        txtMateria.setBounds(130, 40, 120, 24);
+        txtMateria.setBounds(130, 50, 120, 24);
+
+        txtGrado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtGradoKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtGradoKeyTyped(evt);
+            }
+        });
         getContentPane().add(txtGrado);
-        txtGrado.setBounds(130, 80, 120, 24);
+        txtGrado.setBounds(130, 90, 120, 24);
 
         jLabel10.setText("Ejem: TerceroA");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(260, 80, 90, 30);
+        jLabel10.setBounds(270, 80, 90, 30);
 
-        cbxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tarea", "Examen", "Leccion", "Actividad en Clase", " " }));
+        cbxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Extraclase", "Examen", "Leccion", "Intraclase", " " }));
         cbxTipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbxTipoActionPerformed(evt);
             }
         });
         getContentPane().add(cbxTipo);
-        cbxTipo.setBounds(130, 400, 90, 26);
+        cbxTipo.setBounds(90, 410, 130, 26);
 
         jLabel2.setText("Tipo");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(30, 400, 50, 16);
+        jLabel2.setBounds(20, 410, 50, 16);
 
         jLabel4.setText("Estado");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(240, 340, 80, 16);
+        jLabel4.setBounds(270, 350, 80, 16);
 
         jLabel5.setText("Tema");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(30, 370, 80, 20);
+        jLabel5.setBounds(20, 380, 80, 20);
 
         jLabel6.setText("Nota");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(240, 370, 80, 20);
+        jLabel6.setBounds(270, 380, 80, 20);
 
         jLabel7.setText("Observaciones");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(240, 400, 100, 20);
+        jLabel7.setBounds(270, 410, 100, 20);
+
+        txtObs.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtObsKeyReleased(evt);
+            }
+        });
         getContentPane().add(txtObs);
-        txtObs.setBounds(340, 400, 90, 24);
+        txtObs.setBounds(370, 410, 90, 24);
+
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtNombreKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreKeyTyped(evt);
+            }
+        });
         getContentPane().add(txtNombre);
-        txtNombre.setBounds(130, 340, 90, 24);
+        txtNombre.setBounds(90, 350, 130, 24);
+
+        txtTema.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtTemaKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTemaKeyTyped(evt);
+            }
+        });
         getContentPane().add(txtTema);
-        txtTema.setBounds(130, 370, 90, 24);
+        txtTema.setBounds(90, 380, 130, 24);
+
+        txtNota.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtNotaKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNotaKeyTyped(evt);
+            }
+        });
         getContentPane().add(txtNota);
-        txtNota.setBounds(340, 370, 90, 24);
+        txtNota.setBounds(370, 380, 90, 24);
 
         jLabel8.setText("Nombre Materia: ");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(20, 40, 97, 16);
+        jLabel8.setBounds(20, 50, 94, 16);
 
         jTabelActividades.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -216,7 +317,7 @@ public class AgregarNotas extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTabelActividades);
 
         getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(20, 470, 490, 140);
+        jScrollPane2.setBounds(20, 510, 490, 140);
 
         CargarListaTxt.setText("Cargar Lista");
         CargarListaTxt.addActionListener(new java.awt.event.ActionListener() {
@@ -225,7 +326,7 @@ public class AgregarNotas extends javax.swing.JFrame {
             }
         });
         getContentPane().add(CargarListaTxt);
-        CargarListaTxt.setBounds(20, 120, 150, 32);
+        CargarListaTxt.setBounds(20, 150, 150, 24);
 
         jbtAgregarActividad.setText("Agregar Actividad");
         jbtAgregarActividad.addActionListener(new java.awt.event.ActionListener() {
@@ -234,7 +335,7 @@ public class AgregarNotas extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jbtAgregarActividad);
-        jbtAgregarActividad.setBounds(20, 430, 150, 32);
+        jbtAgregarActividad.setBounds(20, 470, 150, 24);
 
         jButton4.setText("Agregar Actividad");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -243,22 +344,31 @@ public class AgregarNotas extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton4);
-        jButton4.setBounds(20, 430, 150, 32);
+        jButton4.setBounds(20, 470, 150, 24);
+
+        txtEstado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtEstadoKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtEstadoKeyTyped(evt);
+            }
+        });
         getContentPane().add(txtEstado);
-        txtEstado.setBounds(340, 340, 90, 24);
+        txtEstado.setBounds(370, 350, 90, 24);
 
         jLabel9.setText("Nombre");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(30, 340, 80, 16);
+        jLabel9.setBounds(20, 350, 80, 16);
 
         labelEstudiante.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         getContentPane().add(labelEstudiante);
-        labelEstudiante.setBounds(110, 270, 160, 30);
+        labelEstudiante.setBounds(110, 300, 160, 30);
 
         jLabel12.setText("   Unidad");
         jLabel12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         getContentPane().add(jLabel12);
-        jLabel12.setBounds(290, 270, 80, 30);
+        jLabel12.setBounds(290, 300, 80, 30);
 
         jbtCargarNotas.setText("Cargar Notas");
         jbtCargarNotas.addActionListener(new java.awt.event.ActionListener() {
@@ -267,7 +377,7 @@ public class AgregarNotas extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jbtCargarNotas);
-        jbtCargarNotas.setBounds(160, 620, 130, 32);
+        jbtCargarNotas.setBounds(180, 660, 130, 24);
 
         jbtGuardarNotas.setText("Guardar Notas");
         jbtGuardarNotas.addActionListener(new java.awt.event.ActionListener() {
@@ -276,14 +386,14 @@ public class AgregarNotas extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jbtGuardarNotas);
-        jbtGuardarNotas.setBounds(20, 620, 130, 32);
+        jbtGuardarNotas.setBounds(40, 660, 130, 24);
 
         jLabel13.setText("  Notas de");
         jLabel13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         getContentPane().add(jLabel13);
-        jLabel13.setBounds(20, 270, 80, 30);
+        jLabel13.setBounds(20, 300, 80, 30);
         getContentPane().add(txtUnidad);
-        txtUnidad.setBounds(380, 270, 90, 30);
+        txtUnidad.setBounds(380, 300, 90, 30);
 
         jbtEditar.setText("Editar");
         jbtEditar.addActionListener(new java.awt.event.ActionListener() {
@@ -292,7 +402,7 @@ public class AgregarNotas extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jbtEditar);
-        jbtEditar.setBounds(170, 430, 80, 32);
+        jbtEditar.setBounds(190, 470, 110, 24);
 
         jButton1.setText("Limpiar Campos");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -301,7 +411,7 @@ public class AgregarNotas extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(260, 430, 140, 32);
+        jButton1.setBounds(310, 470, 140, 24);
 
         jTableNombres.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -314,7 +424,7 @@ public class AgregarNotas extends javax.swing.JFrame {
         jScrollPane3.setViewportView(jTableNombres);
 
         getContentPane().add(jScrollPane3);
-        jScrollPane3.setBounds(490, 160, 180, 100);
+        jScrollPane3.setBounds(510, 190, 240, 100);
 
         ListasCreadas.setText("Mostrar Listas");
         ListasCreadas.addActionListener(new java.awt.event.ActionListener() {
@@ -323,9 +433,110 @@ public class AgregarNotas extends javax.swing.JFrame {
             }
         });
         getContentPane().add(ListasCreadas);
-        ListasCreadas.setBounds(500, 120, 140, 32);
+        ListasCreadas.setBounds(560, 150, 140, 24);
 
-        setSize(new java.awt.Dimension(698, 712));
+        jbtCalcularPromedio.setText("Calcular Promedio");
+        jbtCalcularPromedio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtCalcularPromedioActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jbtCalcularPromedio);
+        jbtCalcularPromedio.setBounds(320, 660, 150, 24);
+
+        jLabel11.setText(" Lecciones");
+        jLabel11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(jLabel11);
+        jLabel11.setBounds(600, 410, 70, 20);
+
+        jLabel14.setText(" Examenes");
+        jLabel14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(jLabel14);
+        jLabel14.setBounds(570, 530, 70, 20);
+
+        jLabel15.setText(" Intraclase");
+        jLabel15.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(jLabel15);
+        jLabel15.setBounds(600, 440, 70, 20);
+
+        jLabel16.setText("  Promedio Actividad");
+        jLabel16.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(jLabel16);
+        jLabel16.setBounds(620, 350, 130, 20);
+
+        jLabel17.setText(" Extraclase");
+        jLabel17.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(jLabel17);
+        jLabel17.setBounds(600, 380, 70, 20);
+
+        labelPLecciones.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(labelPLecciones);
+        labelPLecciones.setBounds(690, 410, 70, 20);
+
+        labelPExamenes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(labelPExamenes);
+        labelPExamenes.setBounds(660, 530, 70, 20);
+
+        labelPIntraclase.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(labelPIntraclase);
+        labelPIntraclase.setBounds(690, 440, 70, 20);
+
+        labelPExtraclase.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(labelPExtraclase);
+        labelPExtraclase.setBounds(690, 380, 70, 20);
+
+        jLabel18.setText("Suma");
+        jLabel18.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(jLabel18);
+        jLabel18.setBounds(570, 490, 70, 20);
+
+        LabelSuma.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(LabelSuma);
+        LabelSuma.setBounds(660, 490, 70, 20);
+
+        jLabel19.setText("X");
+        getContentPane().add(jLabel19);
+        jLabel19.setBounds(740, 530, 20, 16);
+
+        jLabel20.setText("X");
+        getContentPane().add(jLabel20);
+        jLabel20.setBounds(740, 490, 20, 16);
+
+        jTextM1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(jTextM1);
+        jTextM1.setBounds(760, 530, 40, 20);
+
+        jTexM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(jTexM);
+        jTexM.setBounds(760, 490, 40, 20);
+
+        LabelPF.setText(" ");
+        LabelPF.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(LabelPF);
+        LabelPF.setBounds(660, 610, 60, 20);
+
+        jButton2.setText("Promedio Unidad");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2);
+        jButton2.setBounds(610, 570, 150, 24);
+
+        labelIngreso.setFont(new java.awt.Font("Dubai", 3, 12)); // NOI18N
+        labelIngreso.setForeground(new java.awt.Color(204, 0, 0));
+        labelIngreso.setText(" ");
+        getContentPane().add(labelIngreso);
+        labelIngreso.setBounds(130, 120, 120, 16);
+
+        labelcampos.setFont(new java.awt.Font("Dubai", 3, 12)); // NOI18N
+        labelcampos.setForeground(new java.awt.Color(255, 0, 0));
+        labelcampos.setText(" ");
+        getContentPane().add(labelcampos);
+        labelcampos.setBounds(90, 440, 160, 21);
+
+        setSize(new java.awt.Dimension(861, 737));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -348,16 +559,16 @@ public class AgregarNotas extends javax.swing.JFrame {
             Nombre = Nombre + txtMateria.getText() + txtGrado.getText();
             L = C.CargarTxt(Nombre);
             cargarTabla();
-             JOptionPane.showMessageDialog(null, "Haga click sobre el nombre del "
-                + "\n estudiante para agregar notas ");
+            JOptionPane.showMessageDialog(null, "Haga click sobre el nombre del "
+                    + "\n estudiante para agregar notas ");
         }
-       
+
     }//GEN-LAST:event_CargarListaTxtActionPerformed
 
     private void jbtAgregarActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtAgregarActividadActionPerformed
 
         CtrlActividad Ac = new CtrlActividad();
-        
+
         Ac.Crear(txtNombre.getText(), txtTema.getText(), cbxTipo.getSelectedItem().toString(),
                 txtEstado.getText(), Double.parseDouble(txtNota.getText()), txtObs.getText());
         if (La.Buscar(txtNombre.getText())) {
@@ -404,7 +615,7 @@ public class AgregarNotas extends javax.swing.JFrame {
     }//GEN-LAST:event_jbtCargarNotasActionPerformed
 
     private void jbtEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtEditarActionPerformed
-      
+
         La.ObtenerDato(S).setNombre(txtNombre.getText());
         La.ObtenerDato(S).setTema(txtTema.getText());
         La.ObtenerDato(S).setTipo(cbxTipo.getSelectedItem().toString());
@@ -437,6 +648,156 @@ public class AgregarNotas extends javax.swing.JFrame {
             cargarTablaN();
         }
     }//GEN-LAST:event_ListasCreadasActionPerformed
+
+    private void jbtCalcularPromedioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtCalcularPromedioActionPerformed
+        switch (cbxTipo.getSelectedItem().toString()) {
+            case "Extraclase":
+                labelPExtraclase.setText(Double.toString(La.Promedio(cbxTipo.getSelectedItem().toString())));
+                break;
+            case "Intraclase":
+                labelPIntraclase.setText(Double.toString(La.Promedio(cbxTipo.getSelectedItem().toString())));
+                break;
+            case "Leccion":
+                labelPLecciones.setText(Double.toString(La.Promedio(cbxTipo.getSelectedItem().toString())));
+                break;
+            default:
+                labelPExamenes.setText(Double.toString(La.Promedio(cbxTipo.getSelectedItem().toString())));
+                break;
+        }
+
+        if (labelPExtraclase.getText().length() > 0 && labelPIntraclase.getText().length() > 0
+                && labelPLecciones.getText().length() > 0) {
+            Double A = Double.parseDouble(labelPExtraclase.getText())
+                    + Double.parseDouble(labelPIntraclase.getText())
+                    + Double.parseDouble(labelPLecciones.getText());
+            LabelSuma.setText(Double.toString(A / 3));
+        }
+    }//GEN-LAST:event_jbtCalcularPromedioActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        double P = Double.parseDouble(jTexM.getText()) * Double.parseDouble(LabelSuma.getText())
+                + Double.parseDouble(jTextM1.getText()) * Double.parseDouble(labelPExamenes.getText());
+        LabelPF.setText(Double.toString(P));
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void txtMateriaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMateriaKeyTyped
+        // TODO add your handling code here:
+        if (txtMateria.getText().length() >= 45) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtMateriaKeyTyped
+
+    private void txtGradoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtGradoKeyTyped
+        // TODO add your handling code here:
+        if (txtGrado.getText().length() >= 30) {
+            evt.consume();
+        }
+        char validar = evt.getKeyChar();
+        if (Character.isDigit(validar)) {
+            evt.consume();
+            labelIngreso.setText("Solo letras");
+        } else {
+            labelIngreso.setText("");
+        }
+        if (evt.getKeyChar() >= 32 && evt.getKeyChar() <= 32) {
+            evt.consume();
+            labelIngreso.setText("Sin espacios");
+        } else {
+            labelIngreso.setText("");
+        }
+    }//GEN-LAST:event_txtGradoKeyTyped
+
+    private void txtMateriaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMateriaKeyReleased
+        // TODO add your handling code here:
+        confirmaringreso();
+    }//GEN-LAST:event_txtMateriaKeyReleased
+
+    private void txtGradoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtGradoKeyReleased
+        // TODO add your handling code here:
+        confirmaringreso();
+        campos();
+        char validar = evt.getKeyChar();
+        if (Character.isDigit(validar)) {
+            evt.consume();
+            labelIngreso.setText("Solo letras");
+        } else {
+            labelIngreso.setText("");
+        }
+
+    }//GEN-LAST:event_txtGradoKeyReleased
+
+    private void txtNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyReleased
+        // TODO add your handling code here:
+        campos();
+    }//GEN-LAST:event_txtNombreKeyReleased
+
+    private void txtTemaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTemaKeyReleased
+        // TODO add your handling code here:
+        campos();
+    }//GEN-LAST:event_txtTemaKeyReleased
+
+    private void txtEstadoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEstadoKeyReleased
+        // TODO add your handling code here:
+        campos();
+    }//GEN-LAST:event_txtEstadoKeyReleased
+
+    private void txtNotaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNotaKeyReleased
+        // TODO add your handling code here:
+        campos();
+    }//GEN-LAST:event_txtNotaKeyReleased
+
+    private void txtObsKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtObsKeyReleased
+        // TODO add your handling code here:
+        campos();
+    }//GEN-LAST:event_txtObsKeyReleased
+
+    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
+        // TODO add your handling code here:
+        if (txtNombre.getText().length() >= 30) {
+            evt.consume();
+        }
+        char validar = evt.getKeyChar();
+        if (Character.isDigit(validar)) {
+            evt.consume();
+            labelcampos.setText("Solo letras");
+        } else {
+            labelcampos.setText("");
+        }
+    }//GEN-LAST:event_txtNombreKeyTyped
+
+    private void txtTemaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTemaKeyTyped
+        // TODO add your handling code here:
+        if (txtTema.getText().length() >= 30) {
+            evt.consume();
+        }
+        char validar = evt.getKeyChar();
+        if (Character.isDigit(validar)) {
+            evt.consume();
+            labelcampos.setText("Solo letras");
+        } else {
+            labelcampos.setText("");
+        }
+    }//GEN-LAST:event_txtTemaKeyTyped
+
+    private void txtEstadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEstadoKeyTyped
+        // TODO add your handling code here:
+        if (txtGrado.getText().length() >= 30) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtEstadoKeyTyped
+
+    private void txtNotaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNotaKeyTyped
+        // TODO add your handling code here:
+        char validar = evt.getKeyChar();
+        if (Character.isLetter(validar)) {
+            evt.consume();
+            labelcampos.setText("Solo numeros");
+        }
+        if (txtNota.getText().length() >= 6) {
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+        }
+    }//GEN-LAST:event_txtNotaKeyTyped
 
     /**
      * @param args the command line arguments
@@ -478,15 +839,27 @@ public class AgregarNotas extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CargarListaTxt;
+    private javax.swing.JLabel LabelPF;
+    private javax.swing.JLabel LabelSuma;
+    private javax.swing.JLabel LabelSuma1;
     private javax.swing.JButton ListasCreadas;
     private javax.swing.JComboBox<String> cbxTipo;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -500,12 +873,21 @@ public class AgregarNotas extends javax.swing.JFrame {
     private javax.swing.JTable jTabelActividades;
     private javax.swing.JTable jTableAlumnos;
     private javax.swing.JTable jTableNombres;
+    private javax.swing.JTextField jTexM;
+    private javax.swing.JTextField jTextM1;
     private javax.swing.JButton jbtAgregarActividad;
     private javax.swing.JButton jbtAgregarMateria;
+    private javax.swing.JButton jbtCalcularPromedio;
     private javax.swing.JButton jbtCargarNotas;
     private javax.swing.JButton jbtEditar;
     private javax.swing.JButton jbtGuardarNotas;
     private javax.swing.JLabel labelEstudiante;
+    private javax.swing.JLabel labelIngreso;
+    private javax.swing.JLabel labelPExamenes;
+    private javax.swing.JLabel labelPExtraclase;
+    private javax.swing.JLabel labelPIntraclase;
+    private javax.swing.JLabel labelPLecciones;
+    private javax.swing.JLabel labelcampos;
     private javax.swing.JTextField txtEstado;
     private javax.swing.JTextField txtGrado;
     private javax.swing.JTextField txtMateria;

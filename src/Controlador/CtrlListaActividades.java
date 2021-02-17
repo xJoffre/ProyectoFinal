@@ -14,19 +14,20 @@ import javax.swing.JOptionPane;
  *
  * @author Usuario iTC
  */
-public class CtrlListaActividades implements Serializable{
-    
+public class CtrlListaActividades implements Serializable {
+
     private Nodo Inicio;
-     public void Lista() {
+
+    public void Lista() {
         Inicio = null;
     }
-     
-       //Verificar si esta vacia
+
+    //Verificar si esta vacia
     public boolean esVacia() {
         return Inicio == null;
     }
-    
-      public int tamaño() {
+
+    public int tamaño() {
         int c = 0;
         Nodo Aux = Inicio;
 
@@ -36,8 +37,8 @@ public class CtrlListaActividades implements Serializable{
         }
         return c;
     }
-      
-       public void Agregar(Actividades A) {
+
+    public void Agregar(Actividades A) {
         Nodo Nuevo = new Nodo();
         Nuevo.setA(A);
         if (esVacia()) {
@@ -53,7 +54,8 @@ public class CtrlListaActividades implements Serializable{
             aux.setSig(Nuevo);
         }
     }
-        public Actividades ObtenerDato(int x) {
+
+    public Actividades ObtenerDato(int x) {
         Actividades Dato = null;
         if (esVacia() == false && x >= 0) {
             Nodo Nuevo = Inicio;
@@ -68,8 +70,8 @@ public class CtrlListaActividades implements Serializable{
         }
         return Dato;
     }
-        
-          public void Mostrar() {
+
+    public void Mostrar() {
         if (esVacia()) {
             JOptionPane.showMessageDialog(null, "La lista esta vacia");
         } else {
@@ -81,7 +83,8 @@ public class CtrlListaActividades implements Serializable{
             }
         }
     }
-          public void insertar(Actividades dato, int pos) {
+
+    public void insertar(Actividades dato, int pos) {
         Nodo Aux = Inicio;
         int i = 0;
         while (i < pos) {
@@ -96,20 +99,39 @@ public class CtrlListaActividades implements Serializable{
      * @param Nombre
      * @return
      */
-    public boolean Buscar ( String Nombre){
-           if (esVacia()) {
-               System.out.println("Lista Vacia");
+    public boolean Buscar(String Nombre) {
+        if (esVacia()) {
+            System.out.println("Lista Vacia");
         } else {
             Nodo Aux = Inicio;
 
             while (Aux != null) {
-                if(Aux.getA().getNombre().equals(Nombre)){
+                if (Aux.getA().getNombre().equals(Nombre)) {
                     return true;
                 }
                 Aux = Aux.getSig();
             }
         }
-       return false;
+        return false;
     }
-         
+
+    public double Promedio(String Nombre) {
+        double P = 0.0;
+        int c;
+        c = 0;
+        if (esVacia()) {
+            System.out.println("Lista Vacia");
+        } else {
+            Nodo Aux = Inicio;
+            while (Aux != null) {
+                if (Aux.getA().getTipo().equals(Nombre)) {
+                    c++;
+                    P = P + Aux.getA().getNota();
+                }
+                Aux = Aux.getSig();
+            }
+        }
+        return P / c;
+    }
+
 }

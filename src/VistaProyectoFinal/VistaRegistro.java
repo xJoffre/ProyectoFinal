@@ -5,7 +5,9 @@
  */
 package VistaProyectoFinal;
 
+
 import Controlador.CtrlLogin;
+import java.awt.Toolkit;
 
 /**
  *
@@ -18,9 +20,38 @@ public class VistaRegistro extends javax.swing.JFrame {
      */
     public VistaRegistro() {
         initComponents();
+        jbtRegistrarUsuario.setEnabled(false);
 
-      
+    }
 
+     public void confirmaringreso() {
+        if (txtNombre.getText().isEmpty()) {
+            labelnombre.setText("CAMPO NECESARIO");
+        } else {
+            labelnombre.setText("");
+        }
+        if (txtApellido.getText().isEmpty()) {
+            labelapellido.setText("CAMPO NECESARIO");
+        } else {
+            labelapellido.setText("");
+        }
+        if (txtUsuario.getText().isEmpty()) {
+            labelusuario.setText("CAMPO NECESARIO");
+        } else {
+            labelusuario.setText("");
+        }
+        if (txtClave.getText().isEmpty()) {
+            labelcontraseña.setText("CAMPO NECESARIO");
+        } else {
+            labelcontraseña.setText("");
+        }
+
+        if (txtNombre.getText().isEmpty() || txtApellido.getText().isEmpty()
+                || txtUsuario.getText().isEmpty() || txtClave.getText().isEmpty()) {
+            jbtRegistrarUsuario.setEnabled(false);
+        } else {
+            jbtRegistrarUsuario.setEnabled(true);
+        }
     }
 
     /**
@@ -42,6 +73,10 @@ public class VistaRegistro extends javax.swing.JFrame {
         txtApellido = new javax.swing.JTextField();
         txtUsuario = new javax.swing.JTextField();
         txtClave = new javax.swing.JTextField();
+        labelnombre = new javax.swing.JLabel();
+        labelapellido = new javax.swing.JLabel();
+        labelusuario = new javax.swing.JLabel();
+        labelcontraseña = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -53,7 +88,7 @@ public class VistaRegistro extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jbtRegistrarUsuario);
-        jbtRegistrarUsuario.setBounds(110, 250, 83, 32);
+        jbtRegistrarUsuario.setBounds(190, 260, 63, 24);
 
         jLabel1.setText("Nombre: ");
         getContentPane().add(jLabel1);
@@ -61,7 +96,7 @@ public class VistaRegistro extends javax.swing.JFrame {
 
         jLabel2.setText("Apellido:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(40, 90, 48, 20);
+        jLabel2.setBounds(40, 90, 47, 20);
 
         jLabel6.setText("Registre nombre de Usuario:");
         getContentPane().add(jLabel6);
@@ -69,27 +104,82 @@ public class VistaRegistro extends javax.swing.JFrame {
 
         jLabel7.setText("Registre Clave:");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(10, 200, 85, 16);
+        jLabel7.setBounds(10, 200, 84, 16);
 
         jLabel8.setText("REGISTRO DOCENTE");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(90, 10, 115, 26);
+        jLabel8.setBounds(170, 10, 170, 26);
+
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtNombreKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreKeyTyped(evt);
+            }
+        });
         getContentPane().add(txtNombre);
-        txtNombre.setBounds(100, 50, 139, 30);
+        txtNombre.setBounds(100, 50, 180, 30);
+
+        txtApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtApellidoKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtApellidoKeyTyped(evt);
+            }
+        });
         getContentPane().add(txtApellido);
-        txtApellido.setBounds(100, 90, 139, 30);
+        txtApellido.setBounds(100, 90, 180, 30);
 
         txtUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUsuarioActionPerformed(evt);
             }
         });
+        txtUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtUsuarioKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtUsuarioKeyTyped(evt);
+            }
+        });
         getContentPane().add(txtUsuario);
         txtUsuario.setBounds(180, 154, 98, 30);
+
+        txtClave.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtClaveKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtClaveKeyTyped(evt);
+            }
+        });
         getContentPane().add(txtClave);
         txtClave.setBounds(180, 200, 98, 30);
 
-        setSize(new java.awt.Dimension(335, 367));
+        labelnombre.setFont(new java.awt.Font("Dubai", 3, 12)); // NOI18N
+        labelnombre.setForeground(new java.awt.Color(255, 0, 51));
+        getContentPane().add(labelnombre);
+        labelnombre.setBounds(300, 60, 140, 20);
+
+        labelapellido.setFont(new java.awt.Font("Dubai", 3, 12)); // NOI18N
+        labelapellido.setForeground(new java.awt.Color(255, 51, 51));
+        getContentPane().add(labelapellido);
+        labelapellido.setBounds(300, 100, 140, 20);
+
+        labelusuario.setFont(new java.awt.Font("Dubai", 3, 12)); // NOI18N
+        labelusuario.setForeground(new java.awt.Color(255, 0, 51));
+        getContentPane().add(labelusuario);
+        labelusuario.setBounds(300, 160, 130, 20);
+
+        labelcontraseña.setFont(new java.awt.Font("Dubai", 3, 12)); // NOI18N
+        labelcontraseña.setForeground(new java.awt.Color(255, 51, 51));
+        getContentPane().add(labelcontraseña);
+        labelcontraseña.setBounds(300, 210, 130, 21);
+
+        setSize(new java.awt.Dimension(488, 352));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -98,13 +188,82 @@ public class VistaRegistro extends javax.swing.JFrame {
     }//GEN-LAST:event_txtUsuarioActionPerformed
 
     private void jbtRegistrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtRegistrarUsuarioActionPerformed
-    CtrlLogin D = new CtrlLogin();
-    D.crearDocente(txtNombre.getText(), txtApellido.getText(), txtUsuario.getText(), txtClave.getText());
-    D.GuardarFichero();
-    this.setVisible(false);
-    Login L = new Login();
-    L.setVisible(true);
+
+        CtrlLogin D = new CtrlLogin();
+        D.crearDocente(txtNombre.getText(), txtApellido.getText(), txtUsuario.getText(), txtClave.getText());
+        D.GuardarFichero();
+        this.setVisible(false);
+        Login L = new Login();
+        L.setVisible(true);
     }//GEN-LAST:event_jbtRegistrarUsuarioActionPerformed
+
+    private void txtNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyReleased
+        // TODO add your handling code here:
+        confirmaringreso();
+    }//GEN-LAST:event_txtNombreKeyReleased
+
+    private void txtApellidoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoKeyReleased
+        // TODO add your handling code here:
+        confirmaringreso();
+    }//GEN-LAST:event_txtApellidoKeyReleased
+
+    private void txtUsuarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsuarioKeyReleased
+        // TODO add your handling code here:
+        confirmaringreso();
+    }//GEN-LAST:event_txtUsuarioKeyReleased
+
+    private void txtClaveKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtClaveKeyReleased
+        // TODO add your handling code here:
+        confirmaringreso();
+    }//GEN-LAST:event_txtClaveKeyReleased
+
+    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
+        // TODO add your handling code here:
+        char validar = evt.getKeyChar();
+        if (txtNombre.getText().length() >= 30) {
+            evt.consume();
+
+        }
+        if (Character.isDigit(validar)) {
+            Toolkit.getDefaultToolkit().beep();
+            evt.consume();
+            labelnombre.setText("Solo letras");
+        }
+    }//GEN-LAST:event_txtNombreKeyTyped
+
+    private void txtApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoKeyTyped
+        // TODO add your handling code here:
+        char validar = evt.getKeyChar();
+        if (txtApellido.getText().length() >= 30) {
+            evt.consume();
+
+        }
+        if (Character.isDigit(validar)) {
+            Toolkit.getDefaultToolkit().beep();
+            evt.consume();
+            labelapellido.setText("Solo letras");
+        }
+    }//GEN-LAST:event_txtApellidoKeyTyped
+
+    private void txtUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsuarioKeyTyped
+        // TODO add your handling code here:
+        if (evt.getKeyChar() >= 32 && evt.getKeyChar() <= 32) {
+            evt.consume();
+            labelusuario.setText("Sin espacios");
+        } else {
+            labelusuario.setText("");
+        }
+    }//GEN-LAST:event_txtUsuarioKeyTyped
+
+    private void txtClaveKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtClaveKeyTyped
+        // TODO add your handling code here:
+        if (evt.getKeyChar() >= 32 && evt.getKeyChar() <= 32) {
+            evt.consume();
+            labelcontraseña.setText("Sin espacios");
+        } else {
+            labelcontraseña.setText("");
+        }
+    }//GEN-LAST:event_txtClaveKeyTyped
 
     /**
      * @param args the command line arguments
@@ -148,6 +307,10 @@ public class VistaRegistro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JButton jbtRegistrarUsuario;
+    private javax.swing.JLabel labelapellido;
+    private javax.swing.JLabel labelcontraseña;
+    private javax.swing.JLabel labelnombre;
+    private javax.swing.JLabel labelusuario;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtClave;
     private javax.swing.JTextField txtNombre;

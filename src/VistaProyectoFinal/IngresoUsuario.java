@@ -44,11 +44,11 @@ public class IngresoUsuario extends javax.swing.JFrame {
 
         jLabel1.setText("Ingresar Usuario: ");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(40, 60, 101, 16);
+        jLabel1.setBounds(40, 60, 99, 16);
 
         jLabel2.setText("Ingresar clave:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(40, 100, 84, 16);
+        jLabel2.setBounds(40, 100, 80, 16);
 
         txtUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,11 +73,11 @@ public class IngresoUsuario extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(100, 150, 78, 30);
+        jButton1.setBounds(100, 150, 58, 30);
 
-        jLabel4.setText("icono*");
+        jLabel4.setText("SISTEMA ACADEMICO GESTOR DE NOTAS ");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(120, 20, 70, 20);
+        jLabel4.setBounds(20, 20, 260, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

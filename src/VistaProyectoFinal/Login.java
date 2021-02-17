@@ -6,6 +6,10 @@
 package VistaProyectoFinal;
 
 import Controlador.CtrlLogin;
+import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
 
 /**
  *
@@ -13,17 +17,21 @@ import Controlador.CtrlLogin;
  */
 public class Login extends javax.swing.JFrame {
 
+    FondoPanel3 fondo = new FondoPanel3();
+
     /**
      * Creates new form Login
      */
     public Login() {
+       this.setContentPane(fondo);
         initComponents();
-         CtrlLogin D = new CtrlLogin();
-        if(D.comprobarCuenta()==true){
+
+        CtrlLogin D = new CtrlLogin();
+        if (D.comprobarCuenta() == true) {
             jButton2.setVisible(false);
         }
+        
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -34,7 +42,7 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        jPanel1 = new FondoPanel3();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
@@ -60,29 +68,29 @@ public class Login extends javax.swing.JFrame {
         });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 330, 170));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 330, 160));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-         CtrlLogin D = new CtrlLogin();
-         if(D.comprobarCuenta()){
-              this.setVisible(false);
-        IngresoUsuario I = new IngresoUsuario();
-        I.setVisible(true);
-         }else{
-              this.setVisible(false);
+
+        CtrlLogin D = new CtrlLogin();
+        if (D.comprobarCuenta()) {
+            this.setVisible(false);
+            IngresoUsuario I = new IngresoUsuario();
+            I.setVisible(true);
+        } else {
+            this.setVisible(false);
             AgregarAlumnosMateria AM = new AgregarAlumnosMateria();
-            AM.setVisible(true);   
-         }
-       
+            AM.setVisible(true);
+        }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-     
+
         this.setVisible(false);
         VistaRegistro V = new VistaRegistro();
         V.setVisible(true);
@@ -123,6 +131,19 @@ public class Login extends javax.swing.JFrame {
         });
     }
 
+    class FondoPanel3 extends JPanel {
+
+        private Image imagen;
+
+        @Override
+        public void paint(Graphics gr) {
+            imagen = new ImageIcon(getClass().getResource("/imagenes/fondo.jpg")).getImage();
+            gr.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
+            setOpaque(false);
+            super.paint(gr);
+
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
